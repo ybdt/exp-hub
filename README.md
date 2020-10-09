@@ -13,7 +13,6 @@
 
 # 0x01 环境搭建
 目标环境：centos7_x64_en-us + solr-8.2.0.tgz + openjdk version "1.8.0_181"  
-wget https://archive.apache.org/dist/lucene/solr/8.2.0/solr-8.2.0.tgz  
 启动后浏览器访问http://127.0.0.1:8983/ ，出现下图所示表示环境配置完成：  
 ![image](./1.png)  
 
@@ -26,8 +25,6 @@ Solr 8.2.0
 
 # 0x04 漏洞复现
 攻击环境：kali2020 + msf5  
-msfconsole  
-use exploit/multi/misc/java_jmx_server  
 run  
 ![image](./2.png)
 
