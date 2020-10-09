@@ -8,9 +8,9 @@ wget https://archive.apache.org/dist/flink/flink-1.9.1/flink-1.9.1-bin-scala_2.1
 tar -xvf ./flink-1.9.1-bin-scala_2.11.tgz  
 cd ./flink-1.9.1/bin/  
 ./start-cluster.sh  
-查看端口8081是否开启，如下图：  
+查看端口8081是否开启，如下图  
 ![image](./0.png)  
-出现下图所示，表示成功启动：  
+浏览器访问，出现下图所示，表示成功启动  
 ![image](./1.png)
 
 # 0x02 利用条件
