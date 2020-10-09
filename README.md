@@ -38,9 +38,6 @@ run
 
 # 0x05 踩坑记录
 坑1：  
-在kali下搭建的漏洞环境run多次后一直失败，经查看发现kali下的java版本是openjdk version "11.0.6" 2020-01-14，怀疑可能是java版本过高导致的利用失败，故在ubuntu16.04_x64_en-us下使用java8重新搭建solr-8.2.0.zip，漏洞利用成功。
-看过别人在java10下也有利用成功的文章，怀疑可能exp针对java10及以下的版本才有效。  
-坑2：  
 centos7下默认开启防火墙，需要临时关闭防火墙：“systemctl stop firewalld”
 
 # 0x06 参考链接
