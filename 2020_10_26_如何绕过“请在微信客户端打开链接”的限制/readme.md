@@ -6,7 +6,7 @@
 # 0x01 获取User-Agent
 但当我通过微信客户端访问上述网址时，却提示出错  
 ![image](./1.png)  
-怀疑是微信团队对此网站做了限制，不让获取User-Agent，绕过方式是自己写获取的User-Agent的页面，代码如下  
+怀疑是微信团队对此网站做了限制，不让获取User-Agent，绕过方式是自己写获取User-Agent的页面，代码如下  
 ```
 <html>
     <body>
