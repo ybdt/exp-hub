@@ -34,4 +34,4 @@ chrome下按F12（或ctrl+shift+i）打开开发者工具，按customize and con
 取消勾选automatically，并在User Agent处填入“micromessenger”，不要关闭开发者工具，否则所做的更改会失效，再次访问被微信限制的页面，能够成功访问页面
 
 # 0x03 注意
-如果你要打开的网址是以 https://open.weixin.qq.com/ 开头的，那么它使用的是微信开放平台，需要使用你的微信帐户信息。这种方式不适用。
+如果你要打开的网址是以 https://open.weixin.qq.com/ 开头的，那么它使用的是微信开放平台，需要使用你的微信帐户信息。这种方式不适用。
