@@ -6,7 +6,7 @@
 复现版本：ThinkCMF X2.2.3
 
 # 0x02 环境搭建
-靶机环境：2008_r2_standard_zh-chs
+靶机环境：win10_1909_pro_x64_zh-chs
 
 下载ThinkCMF X2.2.3，直接放到phpstudy的目录下，访问/ThinkCMFX/，根据提示操作即可
 
@@ -22,7 +22,7 @@ ThinkCMF X2.2.2
 ThinkCMF X2.2.3
 
 # 0x05 漏洞复现
-攻击环境：win10_1909_pro_x64_zh-chs（在英文的kali系统下访问会提示“just a demo for multi lang user! LANG IS en-us;”，改用中文的windows，成功访问）
+攻击环境：win10_1909_pro_x64_zh-chs（在英文的kali系统下访问会提示“just a demo for multi lang user! LANG IS en-us;”）
 
 任意文件写入漏洞复现：  
 浏览器下访问  
