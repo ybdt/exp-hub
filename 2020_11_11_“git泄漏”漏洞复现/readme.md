@@ -25,8 +25,7 @@ python ./GitHack.py http://124.126.19.106:31232/.git/
 ![image](./1.png)  
 
 # 0x06 踩坑记录
-坑1：  
-搭建环境时，第三步报错，提示“thinkcmf 安装报错 Driver.class.php 　LINE: 350”，执行“drop database thinkcmf”后，重新安装成功，原因未知
+无
 
 # 0x07 参考链接
 无
