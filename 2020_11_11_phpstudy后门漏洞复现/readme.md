@@ -6,6 +6,8 @@ phpstudy：流行的php集成部署环境
 复现版本：phpstudy 2018
 
 # 0x02 环境搭建
+目标环境：2008_r2_standard_zh-chs
+
 后门代码存在于phpstudy 2016和phpstudy 2018自带的php-5.2.17、php-5.4.45中的\ext\php_xmlrpc.dll模块中，用记事本打开此文件，查找“@eval”，若文件存在“@eval(%s('%s'));”则存在后门，如下图  
 ![image](./0.png)  
 下载并安装phpstudy 2018，按照提示下一步即可
