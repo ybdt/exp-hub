@@ -16,7 +16,7 @@ docker-compose up -d
 无
 
 # 0x04 影响版本
-无
+Discuz 7.x 6.x
 
 # 0x05 漏洞复现
 攻击环境：kali_x64_en-us
