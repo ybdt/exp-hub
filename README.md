@@ -32,8 +32,9 @@ python ./GitHack.py http://124.126.19.106:31232/.git/
 ![image](./1.png)  
 
 # 0x06 踩坑记录
-无
+坑0：Exploit aborted due to failure: bad-config: Set the most appropriate target manually  
+表示需要设置对应的目标
 
 # 0x07 参考链接
-无
+https://github.com/rapid7/metasploit-framework/pull/12283
 ```
