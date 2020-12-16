@@ -34,5 +34,5 @@ burp抓包，请求头中添加字段：Accept-Charset:ZWNobyBzeXN0ZW0oIm5ldCB1c
 
 # 注意
 我当时寻找有漏洞的版本花了好多时间，现将我寻找到有效版本分享给大家，漏洞环境大于25MB，不能上传到github中，使用百度云分享  
-phpstudy2016分享，提取码：0fvo，链接：https://pan.baidu.com/s/1Alq8UzJzHDAMHcSBCGyIug  
-phpstudy2018分享，提取码：ax63，链接：https://pan.baidu.com/s/16nxaucxBUpbhvO61V-Bu0g
+phpstudy2016分享，提取码：ybdt，链接：https://pan.baidu.com/s/1-dX55n6xT5hNcBYkxicOBg  
+phpstudy2018分享，提取码：ybdt，链接：https://pan.baidu.com/s/1bLX53txLZx4NQAwTsM4BQA
