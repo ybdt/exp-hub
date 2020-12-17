@@ -21,17 +21,17 @@ git：分布式版本控制系统
 # 0x05 漏洞复现
 攻击环境：kali_x64_en-us
 
-git clone https://github.com/lijiejie/GitHack  
-cd ./GitHack-master  
 python ./GitHack.py http://124.126.19.106:31232/.git/  
 如下图  
-![image](./0.png)  
-![image](./1.png)  
+![image](./0.png)
 
-# 0x06 踩坑记录
+# 0x06 批量脚本
+无
+
+# 0x07 踩坑记录
 坑0：Exploit aborted due to failure: bad-config: Set the most appropriate target manually  
 表示需要设置对应的目标
 
-# 0x07 参考链接
+# 0x08 参考链接
 https://github.com/rapid7/metasploit-framework/pull/12283
 ```
