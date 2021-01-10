@@ -1,40 +1,5 @@
 # 0x00 项目宗旨
-本项目专注于更新可武器化的利用代码及批量脚本，不含漏洞分析
+本项目专注于更新可武器化的利用代码及批量脚本，不含漏洞分析，漏洞分析见博客http://ybdt.best
 
-# 0x01 复现模板：
-```
-# 0x00 软件介绍
-git：分布式版本控制系统
-
-# 0x01 复现环境
-使用环境：攻防世界中的环境  
-复现版本：无
-
-# 0x02 环境搭建
-靶机环境：2008_r2_standard_zh-chs
-
-# 0x03 利用条件
-无
-
-# 0x04 影响版本
-无
-
-# 0x05 漏洞复现
-攻击环境：kali_x64_en-us
-
-python ./GitHack.py http://124.126.19.106:31232/.git/  
-如下图  
-![image](./0.png)
-
-# 0x06 批量脚本
-无
-
-# 0x07 踩坑记录
-坑0：Exploit aborted due to failure: bad-config: Set the most appropriate target manually  
-表示需要设置对应的目标
-
-# 0x08 参考链接
-https://github.com/rapid7/metasploit-framework/pull/12283
-```
-# 0x02 法律法规
+# 0x01 法律法规
 该项目仅供合法的渗透测试以及爱好者参考学习，请各位遵守《中华人民共和国网络安全法》以及相应地方的法律，禁止使用该项目进行违法操作，否则自行承担相关责任！
