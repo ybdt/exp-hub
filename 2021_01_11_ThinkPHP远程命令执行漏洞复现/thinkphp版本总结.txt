@@ -1,0 +1,6 @@
+截止到2021/01/03，不算Pre-release版本，5个系列全部版本如下：
+thinkphp 6.0.0-6.0.5
+thinkphp 5.1.0-5.1.40
+thinkphp 5.0.0-5.0.24
+thinkphp 3.2.0-3.2.5
+thinkphp 3.1.0-3.1.3
