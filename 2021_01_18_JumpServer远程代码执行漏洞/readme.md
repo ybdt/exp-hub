@@ -27,7 +27,8 @@ ws://192.168.1.73:8080/ws/ops/tasks/log/
 {"task":"/opt/jumpserver/logs/jumpserver"}
 ```
 如下图，红色圈出的部分即为读取到的远程服务器上的日志内容  
-![image](./a1.png)  
+![image](./a1.png)
+
 如下图，红色圈出的部分即为服务器上的日志内容  
 ![image](./a0.png)
 
