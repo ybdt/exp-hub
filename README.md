@@ -34,10 +34,7 @@ JumpServer < v2.4.5
 攻击环境：kali x64  
 chrome下安装扩展：https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn/related  
 使用如下payload：  
-\```
-ws://192.168.1.73:8080/ws/ops/tasks/log/
-{"task":"/opt/jumpserver/logs/jumpserver"}
-\```
+
 如下图，红色圈出的部分即为读取到的远程服务器上的日志内容  
 ![image](./a1.png)
 
