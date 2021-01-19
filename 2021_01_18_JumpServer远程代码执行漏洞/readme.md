@@ -22,7 +22,7 @@ JumpServer < v2.4.5
 # 0x04 漏洞复现
 攻击环境：kali x64  
 chrome下安装扩展：https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn/related  
-使用如下payload：  
+远程日志读取payload：  
 ```
 ws://192.168.1.73:8080/ws/ops/tasks/log/
 {"task":"/opt/jumpserver/logs/jumpserver"}
@@ -32,6 +32,8 @@ ws://192.168.1.73:8080/ws/ops/tasks/log/
 
 如下图，红色圈出的部分即为服务器上的日志内容  
 ![image](./a0.png)
+
+至于远程命令执行的复现原理是模拟web terminal，前提需要user、system_user、assert，这3个一般读取不到，利用难度较大
 
 # 0x05 批量脚本
 无
