@@ -33,7 +33,20 @@ ws://192.168.1.73:8080/ws/ops/tasks/log/
 如下图，红色圈出的部分即为服务器上的日志内容  
 ![image](./a0.png)
 
-至于远程命令执行的复现原理是模拟web terminal，前提需要user、system_user、assert，这3个一般读取不到，利用难度较大
+至于远程命令执行，首先需要在返回的信息中获取Taskid
+```
+ws://xx.xx.xx.xx:8080/ws/ops/tasks/log/
+{"task":"/opt/jumpserver/logs/jumpserver"}
+```
+如下图（下图摘自别人的文章）  
+![image](./0.png)  
+利用上一步得到的Taskid，可进行进一步的信息获取，将Taskid值send给接口，即可查看到当前任务的详细信息。
+```
+{"task":"dc0533d8-078a-47c0-b554-01f368a89a19"}
+```
+可能有些小伙伴在复现读取Taskid信息时没有成功，我也一样，我们获取到的内容取决于日志记录的内容，一些Taskid可能已经失效了，在进行测试的时候可以看一下当前Taskid对应的时间，过于久远的id肯定是无法获取详情的。同理也能解释为什么在很多次测试中没有搜索到system_user这个字段，如果在实战中运气足够好，正好赶上管理员登陆了系统未退出，在日志中获取到system_user、user、asset这三个字段，则可以RCE，脚本参考jumpserver-rce.py
+
+原理是模拟web terminal，前提需要user、system_user、assert这三个字段的值，这3个一般读取不到，利用难度较大
 
 # 0x05 批量脚本
 无
