@@ -8,14 +8,12 @@ VMware vSphere Client：通常安装在管理员的笔记本上面，负责连�
 
 # 0x01 复现环境
 #### 使用本地搭建的环境：  
-VMware Workstation 16 Pro + VMware-VMvisor-Installer-7.0.0-15843807.x86_64.iso + VMware-VCSA-all-7.0.0-15952498.iso  
-复现版本：  
+win10 1909 x64 + VMware Workstation 16 Pro + VMware-VMvisor-Installer-7.0.0-15843807.x86_64.iso + VMware-VCSA-all-7.0.0-15952498.iso  
+#### 复现版本：  
 VMware vCenter Server 7.0.0  
-环境搭建过程：  
-1、使用官方提供的v2.6.1的quick_start.sh安装后，竟然后v2.6.2，这个坑真是无语了，使用知识星球师傅提供的安装脚本，安装后是v2.6.1（这个安装脚本执行后可能会报错，多试几次）  
-2、执行quick_start.sh后，一路默认即可  
-3、安装完成后需要切换到/opt/jumpserver-installer-v2.6.1/下执行jmsctl.sh，直接使用绝对路径会报错  
-4、需要开启iptables，否则报错
+#### 环境搭建过程：  
+1、安装VMware ESXi，参考这篇文章[](https://blog.51cto.com/10802692/2409826)，但是我在安装完创建虚拟机时，报错“无法打开虚拟机 CentOS7-x64 的电源。资源不足。 单击此处了解更多详细信息。”，原因未知，还好不影响当前的漏洞复现，先放一边  
+2、
 
 # 0x02 利用条件
 无
