@@ -4,7 +4,7 @@ VMware ESXi：安装在物理机上，负责虚拟化服务
 VMware vCenter Server：通常安装在虚拟机上，负责管理虚拟机  
 VMware vSphere Client：通常安装在管理员的笔记本上面，负责连接到VMware vCenter Server来管理虚拟机，或直接管理虚拟机  
 通常部署在内网中  
-关于它们的下载，可参考这篇文章[](https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg)提到的（使用浏览器会超慢，使用迅雷会快很多）  
+关于它们的下载，可参考这篇文章[https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg](https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg)提到的（使用浏览器会超慢，使用迅雷会快很多）  
 具体关于它们都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
 最后给不熟悉VMware vSphere的同学提一句，VMware vSphere Client长这样  
 ![image](./pic/0.png)
@@ -15,7 +15,7 @@ win10 1909 x64 + VMware Workstation 16 Pro + VMware-VMvisor-Installer-7.0.0-1584
 #### 复现版本：  
 VMware vCenter Server 7.0.0  
 #### 环境搭建过程：  
-1、安装VMware ESXi，参考这篇文章[](https://blog.51cto.com/10802692/2409826)，但是我在安装完创建虚拟机时，报错“无法打开虚拟机 CentOS7-x64 的电源。资源不足。 单击此处了解更多详细信息。”，原因未知，先放一边  
+1、安装VMware ESXi，参考这篇文章[https://blog.51cto.com/10802692/2409826](https://blog.51cto.com/10802692/2409826)，但是我在安装完创建虚拟机时，报错“无法打开虚拟机 CentOS7-x64 的电源。资源不足。 单击此处了解更多详细信息。”，原因未知，先放一边  
 2、
 
 # 0x02 利用条件
