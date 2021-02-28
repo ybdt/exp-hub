@@ -7,7 +7,7 @@ VMware vSphere Client：通常安装在管理员的笔记本上面，负责连�
 具体关于它们都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878
 
 # 0x01 复现环境
-###### 使用本地搭建的环境：  
+##### 使用本地搭建的环境：  
 VMware Workstation 16 Pro + VMware-VMvisor-Installer-7.0.0-15843807.x86_64.iso + VMware-VCSA-all-7.0.0-15952498.iso  
 复现版本：  
 VMware vCenter Server 7.0.0  
