@@ -6,7 +6,7 @@ VMware vSphere Client：通常安装在管理员的笔记本上面，负责连�
 通常部署在内网中  
 关于它们的下载，可参考这篇文章[](https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg)提到的（使用浏览器会超慢，使用迅雷会快很多）  
 具体关于它们都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
-最后给不熟悉VMware vSphere提一句，VMware vSphere Client长这样  
+最后给不熟悉VMware vSphere的同学提一句，VMware vSphere Client长这样  
 ![image](./pic/0.png)
 
 # 0x01 复现环境
