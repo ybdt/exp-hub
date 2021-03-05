@@ -16,7 +16,9 @@ win10 1909 x64 + VMware Workstation 16 Pro + VMware-VMvisor-Installer-7.0.0-1584
 VMware vCenter Server 7.0.0  
 #### 环境搭建过程：  
 1、安装VMware ESXi，参考这篇文章[https://blog.51cto.com/10802692/2409826](https://blog.51cto.com/10802692/2409826)，但是我在安装完创建虚拟机时，报错“无法打开虚拟机 CentOS7-x64 的电源。资源不足。 单击此处了解更多详细信息。”，原因未知，先放一边  
-2、安装VMware vCenter，参考这篇文章[https://blog.csdn.net/qq_38028248/article/details/107712839](https://blog.51cto.com/10802692/2409826)，
+2、安装VMware vCenter，参考这篇文章[https://blog.csdn.net/qq_38028248/article/details/107712839](https://blog.51cto.com/10802692/2409826)，安装过程有几点需要注意：  
+  1）VMware ESXi需要保持开启状态  
+  2）安装过程中，到内存步骤，提示最少需要12GB，实际设置要比12GB多一些，否则会报错
 
 # 0x02 利用条件
 无
