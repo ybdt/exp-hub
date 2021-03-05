@@ -16,29 +16,26 @@ win10 1909 x64 + VMware Workstation 16 Pro + VMware-VMvisor-Installer-7.0.0-1584
 VMware vCenter Server 7.0.0  
 #### 环境搭建过程：  
 1、安装VMware ESXi，参考这篇文章[https://blog.51cto.com/10802692/2409826](https://blog.51cto.com/10802692/2409826)，但是我在安装完创建虚拟机时，报错“无法打开虚拟机 CentOS7-x64 的电源。资源不足。 单击此处了解更多详细信息。”，原因未知，先放一边  
-2、
+2、安装VMware vCenter，参考这篇文章[https://blog.csdn.net/qq_38028248/article/details/107712839](https://blog.51cto.com/10802692/2409826)，
 
 # 0x02 利用条件
 无
 
 # 0x03 影响版本
-JumpServer < v2.6.2  
-JumpServer < v2.5.4  
-JumpServer < v2.4.5
+VMware vCenter Server 7.0系列 < 7.0.U1c  
+VMware vCenter Server 6.7系列 < 6.7.U3l  
+VMware vCenter Server 6.5系列 < 6.5 U3n  
+VMware ESXi 7.0系列 < ESXi70U1c-17325551  
+VMware ESXi 6.7系列 < ESXi670-202102401-SG  
+VMware ESXi 6.5系列 < ESXi650-202102101-SG
 
 # 0x04 漏洞复现
-攻击环境：kali x64  
-chrome下安装扩展：https://chrome.google.com/webstore/detail/websocket-test-client/fgponpodhbmadfljofbimhhlengambbn/related  
-使用如下payload：  
 
-如下图，红色圈出的部分即为读取到的远程服务器上的日志内容  
-![image](./a1.png)
-
-如下图，红色圈出的部分即为服务器上的日志内容  
-![image](./a0.png)
 
 # 0x05 批量脚本
 无
 
 # 0x06 参考链接
-https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg
+https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg  
+http://noahblog.360.cn/vcenter-6-5-7-0-rce-lou-dong-fen-xi/?continueFlag=542f9390afb74a1758303feb14144afc  
+https://swarm.ptsecurity.com/unauth-rce-vmware/
