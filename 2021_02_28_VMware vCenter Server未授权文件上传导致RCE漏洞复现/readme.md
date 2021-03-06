@@ -39,6 +39,8 @@ VMware ESXi 6.5系列 < ESXi650-202102101-SG
 无
 
 # 0x06 参考链接
-https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg  
+thelostworld->https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg  
 http://noahblog.360.cn/vcenter-6-5-7-0-rce-lou-dong-fen-xi/?continueFlag=542f9390afb74a1758303feb14144afc  
-https://swarm.ptsecurity.com/unauth-rce-vmware/
+https://swarm.ptsecurity.com/unauth-rce-vmware/  
+print("")->https://mp.weixin.qq.com/s/IjNLS-a464fPJwkdBXCbmA  
+360代码卫士->https://mp.weixin.qq.com/s/GRbtvk97QLaTnDDQIA_2vA
