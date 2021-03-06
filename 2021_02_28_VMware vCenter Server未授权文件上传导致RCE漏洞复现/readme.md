@@ -37,7 +37,9 @@ vCenter版本对比表：
 https://www.virten.net/vmware/vcenter-release-and-build-number-history/
 
 # 0x04 漏洞复现
-
+搭建完环境后，访问[https://192.168.1.5/ui/vropspluginui/rest/services/uploadova](https://192.168.1.5/ui/vropspluginui/rest/services/uploadova)401，需要授权  
+我这里发现还有一个端口能访问[https://192.168.1.5:5480/ui/vropspluginui/rest/services/uploadova](https://192.168.1.5:5480/ui/vropspluginui/rest/services/uploadova)200，页面没有内容  
+先放一放
 
 # 0x05 批量脚本
 无
