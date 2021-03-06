@@ -20,7 +20,7 @@ VMware vCenter Server 7.0.0
 2、安装VMware vCenter，参考这篇文章[https://blog.csdn.net/qq_38028248/article/details/107712839](https://blog.csdn.net/qq_38028248/article/details/107712839)，我采用解压缩ISO文件并执行安装包的方式，安装过程有几点需要注意：  
 2.1）VMware ESXi需要保持开启状态（其实是将VMware vCenter Server这台虚拟机安装到VMware ESXi中）  
 2.2）安装过程中，到内存步骤，提示最少需要12GB，实际设置要比12GB多一些，否则会报错  
-2.3）安装过程中，到存储步骤，提示最少需要25GB，我在设置的时候分配了142GB，但不知道为什么存储只显示13.75GB，开始SSH并登录后发现，有119GB存储的文件系统是VMFS-L，查阅资料[https://www.azurew.com/vmware/esxi-7-0/3792.html](https://www.azurew.com/vmware/esxi-7-0/3792.html)后，添加60GB新存储，在存储->设备中添加，至此多出60GB存储空间，至于119GB的VMFS-L先不去管，按照提示，基本一路下一步，成功安装VMware vCenter
+2.3）安装过程中，到存储步骤，提示最少需要25GB，我在设置的时候分配了142GB，但不知道为什么存储只显示13.75GB，开启VMware ESXi的SSH并登录后发现，有119GB存储的文件系统是VMFS-L，查阅资料[https://www.azurew.com/vmware/esxi-7-0/3792.html](https://www.azurew.com/vmware/esxi-7-0/3792.html)后，添加60GB新存储，在存储->设备中添加，至此多出60GB存储空间，至于119GB的VMFS-L先不去管，按照提示，基本一路下一步，成功安装VMware vCenter
 
 # 0x02 利用条件
 无
