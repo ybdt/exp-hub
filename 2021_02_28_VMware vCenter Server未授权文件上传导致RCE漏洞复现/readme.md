@@ -2,7 +2,7 @@
 VMware vSphere是一个类似MS Office的套件，它包含VMware ESXi、VMware vCenter Server、VMware vSphere Client  
 VMware ESXi：安装在物理机上，负责虚拟化服务  
 VMware vCenter Server：通常安装在虚拟机上，负责管理虚拟机  
-VMware vSphere Client：通常安装在管理员的笔记本上，负责连接到VMware vCenter Server来管理虚拟机，或直接管理虚拟机  
+VMware vSphere Client：通常安装在管理员的笔记本上，负责连接到VMware vCenter Server来管理虚拟机，或直接连接虚拟机来管理  
 通常部署在内网中  
 关于它们的下载，可参考这篇文章[https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg](https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg)提到的（使用浏览器会超慢，使用迅雷会快很多）  
 具体关于它们都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
