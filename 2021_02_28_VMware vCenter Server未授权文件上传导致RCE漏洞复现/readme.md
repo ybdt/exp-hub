@@ -33,6 +33,9 @@ VMware ESXi 7.0系列 < ESXi70U1c-17325551
 VMware ESXi 6.7系列 < ESXi670-202102401-SG  
 VMware ESXi 6.5系列 < ESXi650-202102101-SG
 
+vCenter版本对比表：  
+https://www.virten.net/vmware/vcenter-release-and-build-number-history/
+
 # 0x04 漏洞复现
 
 
