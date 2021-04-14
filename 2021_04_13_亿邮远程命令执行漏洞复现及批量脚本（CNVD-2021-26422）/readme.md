@@ -31,7 +31,7 @@ type='|id||'
 ![image](./pic/0.png)
 
 # 0x05 批量脚本
-EYouMailRCE-Batch-Detect.py，具体用法见：python EYouMailRCE-Batch-Detect.py -h  
+EYouMailRCE-Batch-Detect.py，具体用法见：python3 EYouMailRCE-Batch-Detect.py -h  
 效果如下  
 ![image](./pic/1.png)
 
