@@ -36,4 +36,4 @@ EYouMailRCE-Batch-Detect.py，具体用法见：python EYouMailRCE-Batch-Detect.
 ![image](./pic/1.png)
 
 # 0x06 参考链接
-https://mp.weixin.qq.com/s/b7jyA5sylkDNauQbwZKvBg
+[https://github.com/Tas9er/EYouMailRCE](https://github.com/Tas9er/EYouMailRCE)反编译后参考编写
