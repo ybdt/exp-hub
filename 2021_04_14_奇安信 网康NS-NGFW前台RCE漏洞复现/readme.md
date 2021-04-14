@@ -1,5 +1,5 @@
 # 0x00 软件介绍
-网康NGFW：网康Next Generation FireWall，即网康下一代防火墙，网康NS-NGFW是网康下一代防火墙系列中的一款  
+网康NGFW：网康Next Generation FireWall，即网康下一代防火墙，网康NS-NGFW是网康下一代防火墙系列中的一款，由于网康目前被奇安信收购，故称为：奇安信 网康NS-NGFW  
 官网：https://www.netentsec.com/product/lists_265.html
 
 # 0x01 复现环境
