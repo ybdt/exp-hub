@@ -9,7 +9,7 @@ def banner():
     print("亿邮电子邮件系统远程命令执行漏洞批量检测工具");
     print("Author: ybdt");
     print("Date: 2021/04/13");
-    print("Location: https://github.com/ybdt/exp-hub/2021_04_13_亿邮远程命令执行漏洞复现及批量脚本（CNVD-2021-26422）/");
+    print("Location: https://github.com/ybdt/exp-hub/");
     print("*****************************************");
     print("");
     print("*************************警 告*****************************");
