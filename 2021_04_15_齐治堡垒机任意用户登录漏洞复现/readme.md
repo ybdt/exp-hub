@@ -23,7 +23,7 @@ https://x.x.x.x/audit/gui_detail_view.php?token=1&id=%5C&uid=%2Cchr(97))%20or%20
 ![image](./pic/0.png)
 
 # 0x05 批量脚本
-用友NC-FileRead-Vuln-Batch-Detect.py，具体用法见：python3 用友NC-FileRead-Vuln-Batch-Detect.py -h  
+齐治堡垒机-任意用户登录-Vuln-Batch-Detect.py，具体用法见：python3 齐治堡垒机-任意用户登录-Vuln-Batch-Detect.py -h  
 效果如下  
 ![image](./pic/1.png)
 
