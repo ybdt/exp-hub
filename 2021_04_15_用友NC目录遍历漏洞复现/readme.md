@@ -19,9 +19,8 @@
 ```
 http://x.x.x.x/NCFindWeb?service=IPreAlertConfigService&filename
 ```
-返回如下图  
-![image](./pic/0.png)  
-表示存在目录遍历漏洞
+返回如下图，表示存在目录遍历漏洞  
+![image](./pic/0.png)
 
 # 0x05 批量脚本
 网康NS-NGFW-RCE-Batch-Detect.py，具体用法见：python3 网康NS-NGFW-RCE-Batch-Detect.py -h  
