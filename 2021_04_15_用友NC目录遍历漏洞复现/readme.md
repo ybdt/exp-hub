@@ -23,9 +23,9 @@ http://x.x.x.x/NCFindWeb?service=IPreAlertConfigService&filename
 ![image](./pic/0.png)
 
 # 0x05 批量脚本
-网康NS-NGFW-RCE-Batch-Detect.py，具体用法见：python3 网康NS-NGFW-RCE-Batch-Detect.py -h  
+用友NC-FileRead-Vuln-Batch-Detect.py，具体用法见：python3 用友NC-FileRead-Vuln-Batch-Detect.py -h  
 效果如下  
-![image](./pic/2.png)
+![image](./pic/1.png)
 
 # 0x06 参考链接
 https://mp.weixin.qq.com/s/QqlueerhP0uVWWJNULhGvw
