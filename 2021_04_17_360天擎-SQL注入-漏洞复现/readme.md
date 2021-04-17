@@ -1,6 +1,5 @@
 # 0x00 漏洞介绍
-360天擎：一套终端安全管理系统，包括客户端、Web端，漏洞出现在Web端，一个可以未授权访问的API存在SQL注入漏洞，可导致写入Webshell  
-现在天擎系统归属奇安信，常称为奇安信天擎，官网：https://www.qianxin.com/product/detail/pid/49
+360天擎：一套终端安全管理系统，包括客户端、Web端，漏洞出现在Web端，一个可以未授权访问的API存在SQL注入漏洞，可导致写入Webshell，现在天擎系统归属奇安信，常称为奇安信天擎，官网：https://www.qianxin.com/product/detail/pid/49
 
 # 0x01 复现环境
 复现环境：内网环境  
