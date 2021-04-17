@@ -8,3 +8,7 @@
 
 3、启动后在浏览器中访问exploit.html，如下图  
 ![image](./pic/1.png)
+
+
+Cobalt Strike上线参考这篇文章：  
+https://mp.weixin.qq.com/s/LOpAu8vs8ob85W3sCmXMew
