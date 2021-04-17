@@ -22,7 +22,10 @@ https://x.x.x.x/api/dbstat/gettablessize
 ![image](./pic/0.png)
 
 # 0x05 批量脚本
-具体用法见：python3 360天擎-越权访问导致数据库信息泄露-Vuln-Batch-Detect.py -h  
+用法：
+```
+python3 360天擎-越权访问导致数据库信息泄露-Vuln-Batch-Detect.py -h
+```
 fofa语法：
 ```
 app="360天擎终端安全管理系统"
