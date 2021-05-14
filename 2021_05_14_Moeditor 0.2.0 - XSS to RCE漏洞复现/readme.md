@@ -1,7 +1,7 @@
 参考文章：https://mp.weixin.qq.com/s/qWU8LIwXHkc47zaZhCnLRQ  
-原文只给出了payload和复现截图，没有过程，此文算作稍微逆向吧
+原文只给出了payload和复现截图，没有过程，此文算作“稍微逆向”吧
 
-# 0x00 稍微逆向
+# 0x00 “稍微逆向”
 通过对原文payload中的ascii码，使用如下python脚本进行解码
 ```
 def get_char_from_ascii(input_str):
