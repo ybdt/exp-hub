@@ -100,4 +100,6 @@ Kali-2020.4-vmware-amd64下执行：nc -l -p 1337，如下图
 ![image](./pic/2.png)  
 将最终payload保存为ybdt.md，Ubuntu18.04.2_x64下使用moeditor打开，此时kali下收到命令的输出如下图  
 ![image](./pic/3.png)  
-![image](./pic/4.png)
+![image](./pic/4.png)  
+moeditor执行后如下图  
+![image](./pic/5.png)  
