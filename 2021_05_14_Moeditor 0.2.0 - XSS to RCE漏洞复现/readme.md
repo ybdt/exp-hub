@@ -80,22 +80,20 @@ def cut_blank():
 
 # 0x01 XSS漏洞复现
 首先查看版本，如下图  
-![image](./0.png)  
+![image](./pic/0.png)  
 其次使用如下payload进行简单的XSS漏洞复现
 ```
 <audio src=x onerror=confirm("ybdt")>
 ```
 如下图  
-![image](./1.png)
+![image](./pic/1.png)
 
 # 0x02 远程命令执行漏洞复现
 受害机：Ubuntu18.04.2_x64  
 攻击机：Kali-2020.4-vmware-amd64  
 Ubuntu18.04.2_x64下安装https://moeditor.js.org/  
 Kali-2020.4-vmware-amd64下执行：nc -l -p 1337，如下图  
-![image](./2.png)  
+![image](./pic/2.png)  
 将最终payload保存为ybdt.md，Ubuntu18.04.2_x64下使用moeditor打开，此时kali下收到命令的输出如下图  
-![image](./3.png)  
-![image](./4.png)  
-
-
+![image](./pic/3.png)  
+![image](./pic/4.png)
