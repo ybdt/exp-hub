@@ -1,4 +1,4 @@
-公众号“洛米唯熊”上看到的
+公众号“洛米唯熊”上看到的，参考链接：https://mp.weixin.qq.com/s/yImhOCX3Xy91XaHtFFUnng
 
 首先声明：只复现出了XSS漏洞，没复现出命令执行漏洞
 
