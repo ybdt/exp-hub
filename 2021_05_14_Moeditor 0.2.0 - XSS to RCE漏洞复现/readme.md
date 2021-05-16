@@ -92,7 +92,7 @@ def cut_blank():
 如下图  
 ![image](./pic/1.png)
 
-# 0x02 远程命令执行漏洞复现
+# 0x02 任意文件读取漏洞复现
 受害机：Ubuntu18.04.2_x64  
 攻击机：Kali-2020.4-vmware-amd64  
 受害机下需要有nc，先测试一下  
