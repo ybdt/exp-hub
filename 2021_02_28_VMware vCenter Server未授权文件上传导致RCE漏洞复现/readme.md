@@ -61,6 +61,10 @@ https://www.virten.net/vmware/vcenter-release-and-build-number-history/
 ![image](./pic/1.png)  
 使用[horizon3ai](https://github.com/horizon3ai/CVE-2021-21972)的工具进行漏洞利用，成功登录ssh，如下图  
 ![image](./pic/2.png)  
+上述工具针对linux的攻击方式是ssh公钥登录，针对windows的攻击方式是上传cmdjsp.jsp，由于攻击前不确定操作系统版本，故有些低效
+
+可是使用[Sp4ce](https://github.com/horizon3ai/CVE-2021-21972)的工具针对linux和windows进行webshell上传（版本需要小于6.7U2+），更高效一些，如下图  
+![image](./pic/4.png)  
 
 # 0x05-批量脚本
 vCenter任意文件上传-batch-detect.py，使用如下图  
