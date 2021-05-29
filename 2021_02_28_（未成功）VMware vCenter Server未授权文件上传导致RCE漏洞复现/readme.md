@@ -26,9 +26,8 @@ SHA1：17aa2b1ee20e977fb4f8f8391563f57c3e456361
 ```
 友情提示：使用浏览器下载会超慢，使用迅雷会快很多  
 
-具体关于它们都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
-
-最后给不熟悉VMware vSphere的同学提一句，VMware vSphere Client长这样  
+最后给不熟悉VMware vSphere的同学提一句，关于它们具体都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
+VMware vSphere Client长这样  
 ![image](./pic/0.png)
 
 # 0x01-复现环境
