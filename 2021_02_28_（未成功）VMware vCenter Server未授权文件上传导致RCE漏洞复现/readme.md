@@ -21,6 +21,7 @@ VMware-VCSA-all-7.0.0-15952498.iso档案大小：6.42 GB
 MD5：94bb30ae83cd5f12e2eecce114d43007
 SHA1：17aa2b1ee20e977fb4f8f8391563f57c3e456361
 安装：https://blog.csdn.net/qq_38028248/article/details/107712839
+
 （环境安装参考来源：作者: print("")师傅环境部署）
 ```
 友情提示：使用浏览器会超慢，使用迅雷会快很多  
