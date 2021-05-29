@@ -3,7 +3,17 @@ VMware vSphere是一个套件，通常部署在内网中，主要包含VMware ES
 VMware ESXi：安装在物理机上，负责虚拟化服务  
 VMware vCenter Server：通常安装在虚拟机上，负责管理虚拟机  
 VMware vSphere Client：通常安装在管理员的笔记本上，负责连接到VMware vCenter Server来管理虚拟机，或直接连接虚拟机  
-下载地址：  
+
+最后给不熟悉VMware vSphere的同学提一句，关于它们具体都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
+VMware vSphere Client长这样  
+![image](./pic/0.png)
+
+# 0x01-复现环境
+#### 使用本地搭建的环境：  
+win10 1909 x64 + VMware Workstation 16 Pro + VMware-VMvisor-Installer-7.0.0-15843807.x86_64.iso + VMware-VCSA-all-7.0.0-15952498.iso  
+#### 复现版本：  
+VMware vCenter Server 7.0.0  
+### 下载地址：  
 ```
 安装ESXi 7.0.0
 
@@ -24,16 +34,6 @@ SHA1：17aa2b1ee20e977fb4f8f8391563f57c3e456361
 （环境安装参考来源：作者: print("")师傅环境部署）
 ```
 友情提示：使用浏览器下载会超慢，使用迅雷会快很多  
-
-最后给不熟悉VMware vSphere的同学提一句，关于它们具体都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
-VMware vSphere Client长这样  
-![image](./pic/0.png)
-
-# 0x01-复现环境
-#### 使用本地搭建的环境：  
-win10 1909 x64 + VMware Workstation 16 Pro + VMware-VMvisor-Installer-7.0.0-15843807.x86_64.iso + VMware-VCSA-all-7.0.0-15952498.iso  
-#### 复现版本：  
-VMware vCenter Server 7.0.0  
 #### 环境搭建过程：  
 1、安装VMware ESXi，参考这篇文章[https://blog.51cto.com/10802692/2409826](https://blog.51cto.com/10802692/2409826)，但是我在安装完创建虚拟机时，报错“无法打开虚拟机 CentOS7-x64 的电源。资源不足。 单击此处了解更多详细信息。”，原因未知，先放一边
 
