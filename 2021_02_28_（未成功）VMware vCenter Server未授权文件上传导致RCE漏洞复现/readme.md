@@ -1,10 +1,30 @@
 # 0x00-软件介绍
-VMware vSphere是一个类似MS Office的套件，它包含VMware ESXi、VMware vCenter Server、VMware vSphere Client  
+VMware vSphere是一个套件，主要包含VMware ESXi、VMware vCenter Server、VMware vSphere Client这3块  
 VMware ESXi：安装在物理机上，负责虚拟化服务  
 VMware vCenter Server：通常安装在虚拟机上，负责管理虚拟机  
 VMware vSphere Client：通常安装在管理员的笔记本上，负责连接到VMware vCenter Server来管理虚拟机，或直接连接虚拟机来管理  
 通常部署在内网中  
-关于它们的下载，可参考这篇文章[https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg](https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg)提到的下载地址（使用浏览器会超慢，使用迅雷会快很多）  
+下载地址：  
+```
+安装ESXi 7.0.0
+
+VMware vSphere虚拟机监控程序（ESXi）
+链接：https://cld16.irans3.com/dlir-s3/VMware-VMvisor-Installer-7.0.0-15843807.x86_64.iso
+VMware-VMvisor-Installer-7.0.0-15843807.x86_64.iso档案大小：350 MB
+MD5：220d2e87290f50c3508214cadf66b737
+SHA1：7fda0401ee1b2f49aae89043f9b2d509cf7e25db
+安装：https://blog.51cto.com/10802692/2409826
+
+VMware vCenter Server
+链接：https://cld5.irans3.com/dlir-s3/VMware-VCSA-all-7.0.0-15952498.iso
+VMware-VCSA-all-7.0.0-15952498.iso档案大小：6.42 GB
+MD5：94bb30ae83cd5f12e2eecce114d43007
+SHA1：17aa2b1ee20e977fb4f8f8391563f57c3e456361
+安装：https://blog.csdn.net/qq_38028248/article/details/107712839
+（环境安装参考来源：作者: print("")师傅环境部署）
+```
+
+可参考这篇文章[https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg](https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg)提到的下载地址（使用浏览器会超慢，使用迅雷会快很多）  
 具体关于它们都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
 最后给不熟悉VMware vSphere的同学提一句，VMware vSphere Client长这样  
 ![image](./pic/0.png)
