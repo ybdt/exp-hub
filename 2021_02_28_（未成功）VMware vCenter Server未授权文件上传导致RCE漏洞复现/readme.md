@@ -57,13 +57,14 @@ vCenter版本对比表：
 https://www.virten.net/vmware/vcenter-release-and-build-number-history/
 
 # 0x04-漏洞复现
-环境搭建完成后，访问[https://192.168.1.5/ui/vropspluginui/rest/services/uploadova](https://192.168.1.5/ui/vropspluginui/rest/services/uploadova)401，需要授权  
-我这里发现还有一个端口能访问[https://192.168.1.5:5480/ui/vropspluginui/rest/services/uploadova](https://192.168.1.5:5480/ui/vropspluginui/rest/services/uploadova)200，页面没有内容  
-正常应该是405才有漏洞，还有别的事，这个先放一放吧  
-漏洞利用可参考：https://github.com/horizon3ai/CVE-2021-21972
+环境搭建完成后，访问[https://192.168.1.5/ui/vropspluginui/rest/services/uploadova](https://192.168.1.5/ui/vropspluginui/rest/services/uploadova)，返回405，如下图  
+![image](./pic/1.png)  
+使用[horizon3ai](https://github.com/horizon3ai/CVE-2021-21972)的工具进行漏洞利用，成功登录ssh，如下图  
+![image](./pic/2.png)  
 
 # 0x05-批量脚本
-无
+vCenter任意文件上传-batch-detect.py，使用如下图  
+![image](./pic/3.png)  
 
 # 0x06-参考链接
 thelostworld->https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg  
