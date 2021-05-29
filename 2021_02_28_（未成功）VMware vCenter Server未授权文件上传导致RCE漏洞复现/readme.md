@@ -1,9 +1,8 @@
 # 0x00-软件介绍
-VMware vSphere是一个套件，主要包含VMware ESXi、VMware vCenter Server、VMware vSphere Client这3块  
+VMware vSphere是一个套件，通常部署在内网中，主要包含VMware ESXi、VMware vCenter Server、VMware vSphere Client这3块  
 VMware ESXi：安装在物理机上，负责虚拟化服务  
 VMware vCenter Server：通常安装在虚拟机上，负责管理虚拟机  
-VMware vSphere Client：通常安装在管理员的笔记本上，负责连接到VMware vCenter Server来管理虚拟机，或直接连接虚拟机来管理  
-通常部署在内网中  
+VMware vSphere Client：通常安装在管理员的笔记本上，负责连接到VMware vCenter Server来管理虚拟机，或直接连接虚拟机  
 下载地址：  
 ```
 安装ESXi 7.0.0
