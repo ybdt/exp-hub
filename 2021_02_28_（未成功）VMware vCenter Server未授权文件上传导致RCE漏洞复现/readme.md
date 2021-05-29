@@ -23,9 +23,10 @@ SHA1：17aa2b1ee20e977fb4f8f8391563f57c3e456361
 安装：https://blog.csdn.net/qq_38028248/article/details/107712839
 （环境安装参考来源：作者: print("")师傅环境部署）
 ```
+友情提示：使用浏览器会超慢，使用迅雷会快很多  
 
-可参考这篇文章[https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg](https://mp.weixin.qq.com/s/jI3kMCq5FMnNkgvKr1tFMg)提到的下载地址（使用浏览器会超慢，使用迅雷会快很多）  
 具体关于它们都是干什么的，可参考这篇文章https://blog.csdn.net/eastyell/article/details/91581878  
+
 最后给不熟悉VMware vSphere的同学提一句，VMware vSphere Client长这样  
 ![image](./pic/0.png)
 
