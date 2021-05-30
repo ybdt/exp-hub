@@ -67,6 +67,7 @@ https://www.virten.net/vmware/vcenter-release-and-build-number-history/
 ![image](./pic/4.png)  
 
 # 0x05-批量脚本
+fofa搜索：title="+ ID_VC_Welcome +"  
 vCenter任意文件上传-batch-detect.py，使用如下图  
 ![image](./pic/3.png)  
 
