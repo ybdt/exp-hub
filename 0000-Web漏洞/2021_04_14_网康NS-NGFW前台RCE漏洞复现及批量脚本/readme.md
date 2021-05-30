@@ -45,6 +45,7 @@ Accept-Encoding: gzip
 ![image](./pic/1.png)
 
 # 0x05 批量脚本
+fofa搜索：app="网康科技-下一代防火墙"  
 网康NS-NGFW-RCE-Batch-Detect.py，具体用法见：python3 网康NS-NGFW-RCE-Batch-Detect.py -h  
 效果如下  
 ![image](./pic/2.png)
