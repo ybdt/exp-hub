@@ -13,7 +13,7 @@
 ### 6-杂项漏洞
 
 # 0x02 相关优秀项目
-https://wiki.bylibrary.cn/%E6%BC%8F%E6%B4%9E%E5%BA%93/01-CMS%E6%BC%8F%E6%B4%9E/ActiveMQ/ActiveMQ%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/
+https://wiki.bylibrary.cn/漏洞库/01-CMS漏洞/ActiveMQ/ActiveMQ任意文件上传漏洞/
 
 # 0x03 免责声明
 该项目仅供合法的渗透测试使用，禁止使用该项目进行违法操作，请各位遵守《中华人民共和国网络安全法》以及相应地方的法律法规，否则自行承担相关责任！
