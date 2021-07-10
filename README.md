@@ -5,7 +5,7 @@
 现演化为，对复现过的漏洞中实战出现较多的写出一键批量检测脚本：ybdt-VulnScanner
 
 # 0x01 相关优秀项目
-[1-白阁文库](https://wiki.bylibrary.cn/漏洞库/01-CMS漏洞/ActiveMQ/ActiveMQ任意文件上传漏洞/)  
+[1-白阁文库](https://wiki.bylibrary.cn/)  
 [2-r0eXpeR师傅的redteam_vul项目](https://github.com/r0eXpeR/redteam_vul)
 
 # 0x02 免责声明
