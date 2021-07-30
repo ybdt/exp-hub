@@ -2,9 +2,6 @@
 [2-Kernelhub项目](http://kernelhub.ascotbe.com/)，Kernelhub项目的[Github地址](https://github.com/Ascotbe/Kernelhub)  
 [3-SecWiki的windows-kernel-exploits项目](https://github.com/SecWiki/windows-kernel-exploits)  
 
-参见[http://github.com/ybdt/exp-hub](http://github.com/ybdt/exp-hub)中复现的提权漏洞
-
-
 ```
 1、polkadots-CVE-2021-3560
 
