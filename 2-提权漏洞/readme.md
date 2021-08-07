@@ -7,4 +7,5 @@
 ### Linux提权
 https://github.com/jondonas/linux-exploit-suggester-2  
 CentOS 7系统利用suid提权获取Root Shell：https://www.freebuf.com/articles/system/244627.html  
-https://atsud0.me/2020/04/14/Linux%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F/
+https://atsud0.me/2020/04/14/Linux%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F/  
+Centos7/Centos8 sudo 提权脚本：https://www.o2oxy.cn/3490.html  
