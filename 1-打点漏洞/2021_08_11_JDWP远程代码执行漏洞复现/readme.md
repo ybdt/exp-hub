@@ -10,7 +10,7 @@ JDWP（Java DEbugger Wire Protocol）：即Java调试线协议，是一个为Jav
 telnet ip port
 ```
 查看回显，如果出现“JDWP-Handshake”，则证明漏洞存在。如下图  
-[image](./pic/1.png)  
+[image](./pic/1.jpg)  
 
 ### 漏洞复现：
 借助工具：https://github.com/IOActive/jdwp-shellifier  
