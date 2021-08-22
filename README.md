@@ -21,6 +21,7 @@
 ```
 1、白阁文库：https://wiki.bylibrary.cn/
 2、红队行动易被攻击重点系统整理：https://github.com/r0eXpeR/redteam_vul
+3、https://github.com/zhzyker/exphub
 ```
 
 # 0x02 免责声明
