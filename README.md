@@ -12,7 +12,7 @@
 
 漏洞检测见：https://github.com/ybdt/web-hub/tree/main/2-漏洞检测
 
-# 优秀的漏洞复现项目
+# 0x01 优秀的漏洞复现项目
 ```
 1、白阁文库：https://wiki.bylibrary.cn/
 2、红队行动易被攻击重点系统整理：https://github.com/r0eXpeR/redteam_vul
