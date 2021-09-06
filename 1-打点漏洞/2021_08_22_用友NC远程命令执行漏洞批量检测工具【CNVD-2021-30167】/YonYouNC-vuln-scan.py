@@ -64,7 +64,6 @@ def nc_Check(target_url):
 
 
 def main():
-    
     banner();
 
     ip_file = usage();
