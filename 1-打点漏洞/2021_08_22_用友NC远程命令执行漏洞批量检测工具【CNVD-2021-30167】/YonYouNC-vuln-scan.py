@@ -48,10 +48,10 @@ def nc_Check(target_url):
                     print("[-]目标：" + url + "不存在漏洞\n");
                     return False;
             except requests.exceptions.ConnectTimeout as e1:
-                print("[-]访问目标：" + url + "发生超时，可能存在WAF\n");
+                print("[-]访问目标：" + url + "超时，服务端未响应\n");
                 return Flase;
             except requests.exceptions.ConnectionError as e2:
-                print("[-]访问目标：" + url + "被拒绝或重置，可能存在WAF\n");
+                print("[-]访问目标：" + url + "拒绝或重置，可能存在WAF\n");
             except Exception as e2:
                 print( "[-]访问目标发生异常，目标及异常被添加到文件except.txt中\n".format(url) );
                 f_a_2.write(url + "\n");
