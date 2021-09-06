@@ -55,8 +55,8 @@ def nc_Check(target_url):
                 return Flase;
             except requests.exceptions.ConnectionError as e2:
                 print("[-]访问目标：" + url + "拒绝或重置，可能存在WAF\n");
-            except Exception as e2:
-                print( "[-]访问目标发生异常，目标及异常被添加到文件except.txt中\n".format(url) );
+            except Exception as e:
+                print( "[-]访问目标发生异常，目标及异常信息被保存到except.txt\n".format(url) );
                 f_a_2.write(url + "\n");
                 f_a_2.write( str(e) + "\n");
                 f_a_2.write("\n");
