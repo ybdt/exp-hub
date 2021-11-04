@@ -12,12 +12,10 @@
 
 漏洞检测见：https://github.com/ybdt/web-hub/tree/main/2-漏洞检测
 
-# 0x02 优秀的漏洞复现项目
-```
-1、白阁文库：https://wiki.bylibrary.cn/
-2、红队行动易被攻击重点系统整理：https://github.com/r0eXpeR/redteam_vul
-3、https://github.com/zhzyker/exphub
-```
+# 0x02 优秀项目
+1、白阁文库：https://wiki.bylibrary.cn/  
+2、红队行动易被攻击重点系统整理：https://github.com/r0eXpeR/redteam_vul  
+3、https://github.com/zhzyker/exphub  
 
 # 0x03 免责声明
 该项目仅供授权下使用或学习使用，禁止使用该项目进行违法操作，请各位遵守《中华人民共和国网络安全法》以及相应地方的法律法规，否则自行承担相关责任！
