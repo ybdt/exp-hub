@@ -13,17 +13,14 @@
 漏洞检测见：https://github.com/ybdt/web-hub/tree/main/2-漏洞检测
 
 # 0x02 优秀项目
-1、白阁文库：https://wiki.bylibrary.cn/  
-2、红队行动易被攻击重点系统整理：https://github.com/r0eXpeR/redteam_vul  
-3、https://github.com/zhzyker/exphub  
-
-# 1、优秀的漏洞检测工具
-1、AWVS：https://www.acunetix.com/，破解版可参考：2021_08_16_AWVS_v14.3.210628104安装及破解  
-2、xray：https://github.com/chaitin/xray  
-3、goby：https://cn.gobies.org/  
-4、vulmap：https://github.com/zhzyker/vulmap  
-# 2、参考链接
-https://github.com/chenxiao-403/SRC-experience  
+1 [https://wiki.bylibrary.cn](https://wiki.bylibrary.cn)——白阁文库  
+2 [https://github.com/r0eXpeR/redteam_vul](https://github.com/r0eXpeR/redteam_vul)——r0eXpeR整理的红队易受攻击系统  
+3 [https://www.acunetix.com](https://www.acunetix.com)——破解版可参考：2021_08_16_AWVS_v14.3.210628104安装及破解  
+4 [https://github.com/chaitin/xray](https://github.com/chaitin/xray)——长亭的xray  
+5 [https://cn.gobies.org](https://cn.gobies.org)——白帽汇的goby  
+6 [https://github.com/zhzyker/vulmap](https://github.com/zhzyker/vulmap)——之乎者也的vulmap  
+7 [https://github.com/projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei)——projectdiscovery的nuclei  
+8 [https://github.com/chenxiao-403/SRC-experience](https://github.com/chenxiao-403/SRC-experience)——chenxiao-403的SRC经验  
 
 
 # 0x03 免责声明
