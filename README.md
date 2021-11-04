@@ -20,7 +20,7 @@
 5 [https://cn.gobies.org](https://cn.gobies.org)——白帽汇的goby  
 6 [https://github.com/zhzyker/vulmap](https://github.com/zhzyker/vulmap)——之乎者也的vulmap  
 7 [https://github.com/projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei)——projectdiscovery的nuclei  
-8 [https://github.com/chenxiao-403/SRC-experience](https://github.com/chenxiao-403/SRC-experience)——chenxiao-403的SRC经验  
+8 [https://github.com/Wh0ale/SRC-experience](https://github.com/Wh0ale/SRC-experience)——Wh0ale的SRC经验  
 
 
 # 0x03 免责声明
