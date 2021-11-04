@@ -17,5 +17,14 @@
 2、红队行动易被攻击重点系统整理：https://github.com/r0eXpeR/redteam_vul  
 3、https://github.com/zhzyker/exphub  
 
+# 1、优秀的漏洞检测工具
+1、AWVS：https://www.acunetix.com/，破解版可参考：2021_08_16_AWVS_v14.3.210628104安装及破解  
+2、xray：https://github.com/chaitin/xray  
+3、goby：https://cn.gobies.org/  
+4、vulmap：https://github.com/zhzyker/vulmap  
+# 2、参考链接
+https://github.com/chenxiao-403/SRC-experience  
+
+
 # 0x03 免责声明
 该项目仅供授权下使用或学习使用，禁止使用该项目进行违法操作，请各位遵守《中华人民共和国网络安全法》以及相应地方的法律法规，否则自行承担相关责任！
