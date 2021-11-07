@@ -65,7 +65,7 @@ def main():
     cmd, ip_file = usage();    
 
     with open(ip_file, "r") as f_r:
-        with open("result.txt", "w") as f_w:
+        with open("success_url.txt", "w") as f_w:
             lines = f_r.readlines();
             for line in lines:
                 ip = line.strip("\n");
