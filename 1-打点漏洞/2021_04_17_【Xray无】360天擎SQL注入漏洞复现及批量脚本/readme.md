@@ -24,7 +24,7 @@
 # 0x05 批量脚本
 用法：
 ```
-python3 360天擎-越权访问导致数据库信息泄露-Vuln-Batch-Detect.py -h
+python3 360天擎-SQL注入-Vuln-Batch-Detect.py -h
 ```
 fofa语法：
 ```
