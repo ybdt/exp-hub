@@ -11,3 +11,5 @@ The JMX RMI service in VMware vCenter Server
 6.0 before u1  
 does not restrict registration of MBeans, which allows remote malicious users to execute arbitrary code via the RMI protocol.
 ```
+参考链接：  
+https://vulmon.com/vulnerabilitydetails?qid=CVE-2015-2342&scoretype=cvssv2  
