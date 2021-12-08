@@ -1,0 +1,922 @@
+var articleView = {
+	response: {},
+	docid: "",
+	lang: "en_us",
+	loaded: false,
+	linkPrefix: "",
+	isInternal: false, //iKB - Merge
+};
+
+var alertMessages = [];
+alertMessages["en_us"] =
+	"This document is machine-translated. Although we continue to strive to provide the best translation for this article, translated content may become obsolete. If you notice any translation errors, please provide your feedback at the bottom of this KB page.";
+alertMessages["de"] =
+	"Dieses Dokument wurde maschinell aus dem Englischen übersetzt. Die Übersetzung des Artikels erfolgt auf einer Minimalbasis („Best Effort“), übersetzter Inhalt der Artikel kann veraltet oder inkorrekt sein. Schadenersatzansprüche sind vollständig ausgeschlossen. Wenn Ihnen Übersetzungsfehler auffallen, geben Sie unten auf der betreffenden Publikationsseite in VMware KB Ihr Feeback ab.";
+alertMessages["es"] =
+	"La traducción del inglés de este documento se realizó de manera automática. Dado que los artículos se traducen siguiendo el principio del mejor esfuerzo, el contenido localizado puede estar desactualizado. Para ver el contenido más reciente, consulte el artículo en inglés. Si encuentra errores de traducción, envíenos sus comentarios en la parte inferior de la página de la publicación específica en VMware KB.";
+alertMessages["fr"] =
+	"Ce document est traduit automatiquement de l'anglais.  Bien que nous continuions à nous efforcer de fournir la meilleure traduction pour cet article, le contenu localisé peut devenir obsolète. Pour le dernier contenu, voir la version anglaise. Si vous remarquez des erreurs de traduction, laissez vos commentaires en bas de la page de publication spécifique dans VMware KB.";
+alertMessages["zh_cn"] =
+	"此文档是由机器翻译完成。我们会努力提供最佳翻译版本，但本地化的内容可能会更新不及时。有关最新内容，请参见英文版本。如果您发现任何翻译错误，请在 KB 页面底部提供您的反馈。";
+alertMessages["pt_br"] =
+	"Este documento foi traduzido automaticamente do inglês. Como os artigos são traduzidos em uma base de melhor esforço, o conteúdo pode tornar-se desatualizado. Para obter o conteúdo mais recente, consulte o artigo em Inglês. Se você observar algum erro de tradução, deixe seu feedback na parte inferior da página específica da publicação no VMware KB.";
+alertMessages["ja"] =
+	"このドキュメントは英語からの機械翻訳です。記事はベストエフォートで翻訳を進めているため、ローカライズ化コンテンツは最新情報ではない可能性があります。最新情報は英語版の記事で参照してください。翻訳に誤りがあった場合は VMware KB の各ページの下部にあるフィードバックからご指摘ください。";
+
+let kb = {
+	apiv1: "/services/apexrest/v1/article",
+};
+
+kb.init = function () {
+	if (!window.location.pathname.toLowerCase().includes("/s/article")) {
+		return;
+	}
+
+	//iKB specific - to identify portal type
+	let path = window.location.pathname.split("/");
+	if (path.length > 0) {
+		if (
+			path[1] === "ikb" ||
+			window.location.host.indexOf("ikb") != -1 ||
+			window.location.pathname.indexOf("ikb") != -1
+		) {
+			//sandbox
+			articleView.isInternal = true;
+		}
+	}
+
+	//iKB specific - bypassed API call from iKB portal
+	if (!articleView.isInternal) {
+		if (path.length > 0) {
+			if (path[1] != "s") {
+				articleView.linkPrefix = "/kb";
+				if (
+					!kb.apiv1.toLowerCase().startsWith(articleView.linkPrefix)
+				) {
+					kb.apiv1 = articleView.linkPrefix + kb.apiv1;
+				}
+			}
+			articleView.docid = path[path.length - 1];
+		}
+		let query = new URL(window.location);
+		if (query.searchParams.has("lang")) {
+			articleView.lang = query.searchParams.get("lang");
+		}
+		if (articleView.docid != "" && articleView.lang != "") {
+			kb.fetch(articleView.docid, articleView.lang);
+		}
+	}
+};
+
+kb.onDOMReady = function (func) {
+	if (document.readyState == "loading") {
+		document.addEventListener(
+			"DOMContentLoaded",
+			function () {
+				try {
+					document.removeEventListener("DOMContentLoaded");
+					func();
+				} catch (aM) {
+					console.log(aM);
+				}
+			},
+			false
+		);
+		return false;
+	} else {
+		return true;
+	}
+};
+
+kb.contentLoad = function () {
+	if (articleView.loaded) {
+		return;
+	}
+	kb.loadContent(articleView.response);
+};
+
+kb.checkContentLoad = function () {
+	if (document.getElementById("article_content") === null) {
+		window.setTimeout(kb.checkContentLoad, 500);
+	} else {
+		kb.contentLoad();
+	}
+};
+
+kb.getContent = function (articleView) {
+	if (articleView.loaded) {
+		kb.loadContent(articleView.response);
+	} else {
+		kb.onDOMReady(kb.contentLoad);
+		kb.checkContentLoad();
+	}
+};
+
+kb.fetch = function (docid, lang) {
+	if (docid != "" && lang != "") {
+		fetch(`${kb.apiv1}?docid=${docid}&lang=${lang}`)
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				articleView.response = data;
+				kb.getContent(articleView);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
+};
+
+kb.loadContent = function (content) {
+	articleView.loaded = true;
+	try {
+		if (content.statusCode) {
+			window.location = `/s/login/?ec=302&startURL=/s/article/${articleView.docid}`;
+			return;
+		}
+
+		if (content.meta.articleInfo.redirectTo) {
+			kb.redirectPage(content.meta.articleInfo.redirectTo);
+		} else {
+			kb.setContent(content.content);
+			kb.showMTBanner(content.meta.articleInfo.isMachineTranslation);
+			kb.setMeta(content.meta.articleInfo);
+			kb.showLikes(content.meta.articleInfo.thumbsUp);
+			kb.showSkylineNomination(content.meta.articleInfo.skylineNominated);
+			kb.setLastModified(content.meta.articleInfo.lastModifiedDate);
+			kb.setProducts(content.meta.articleProducts);
+			kb.setAttachments(content.meta.attachments);
+			kb.addActions();
+			kb.setLanguages(content.meta.languages);
+			kb.setPageMeta();
+
+			//iKB Specific - Adding iKB info
+			kb.setiKBComponentsVisibility(false);
+			if (articleView.isInternal) {
+				//Validation Status
+				if (content.meta.articleInfo.validationStatus) {
+					if (
+						content.meta.articleInfo.validationStatus ===
+						"Content Validated"
+					) {
+						document.getElementById(
+							"articleValidationStatus"
+						).style.color = "#62a420";
+					} else {
+						document.getElementById(
+							"articleValidationStatus"
+						).style.color = "#F52F22";
+					}
+					kb.setContentForId(
+						"articleValidationStatus",
+						content.meta.articleInfo.validationStatus
+					);
+					document
+						.getElementById("validationStatusSection")
+						.classList.remove("slds-hide");
+				} else {
+					document
+						.getElementById("validationStatusSection")
+						.classList.add("slds-hide");
+				}
+
+				//Case Attach Count
+				if (content.meta.articleInfo.articleCaseAttachCount > 0) {
+					kb.setContentForId(
+						"caseAttachCount",
+						content.meta.articleInfo.articleCaseAttachCount
+					);
+					document
+						.getElementById("caseAttachCountSection")
+						.classList.remove("slds-hide");
+				} else {
+					document
+						.getElementById("caseAttachCountSection")
+						.classList.add("slds-hide");
+				}
+
+				//SME
+				if (content.meta.articleInfo.sme) {
+					kb.setContentForId(
+						"articleSME",
+						content.meta.articleInfo.sme
+					);
+					document
+						.getElementById("articleSMESection")
+						.classList.remove("slds-hide");
+				} else {
+					document
+						.getElementById("articleSMESection")
+						.classList.add("slds-hide");
+				}
+
+				//Airwatch Topics
+				if (content.meta.articleInfo.airwatchTopics) {
+					kb.setContentForId(
+						"airwatchtopics",
+						content.meta.articleInfo.airwatchTopics
+					);
+					document
+						.getElementById("airwatchtopicsSection")
+						.classList.remove("slds-hide");
+				} else {
+					document
+						.getElementById("airwatchtopicsSection")
+						.classList.add("slds-hide");
+				}
+
+				//PR links
+				if (content.meta.articleInfo.prLinks) {
+					kb.setContentForId(
+						"articlePRLinks",
+						content.meta.articleInfo.prLinks
+					);
+					document
+						.getElementById("articlePRLinksSection")
+						.classList.remove("slds-hide");
+				} else {
+					document
+						.getElementById("articlePRLinksSection")
+						.classList.add("slds-hide");
+				}
+
+				//standard fields
+				kb.setContentForId(
+					"lastModifiedByUser",
+					" by " + content.meta.articleInfo.lastModifiedBy
+				);
+				kb.setContentForId(
+					"lastModifiedMetaByUser",
+					" by " + content.meta.articleInfo.lastModifiedBy
+				);
+				kb.setCreatedDate(content.meta.articleInfo.createdDate);
+				kb.setContentForId(
+					"createdByMetaUser",
+					" by " + content.meta.articleInfo.authoredBy
+				);
+				kb.setiKBComponentsVisibility(true);
+			}
+		}
+	} catch (e) {
+		articleView.loaded = false;
+		console.info("exception ", e);
+	}
+};
+
+//iKB Specific - Setting components visibility
+kb.setiKBComponentsVisibility = function (isIkb) {
+	if (isIkb === true) {
+		document
+			.getElementById("createdMetaDateSection")
+			.classList.remove("slds-hide");
+		document
+			.getElementById("lastModifiedMetaByUser")
+			.classList.remove("slds-hide");
+		document
+			.getElementById("lastModifiedByUser")
+			.classList.remove("slds-hide");
+		document
+			.getElementById("socialcaseMsgSection")
+			.classList.remove("slds-hide");
+		document
+			.getElementById("linktoSRSection")
+			.classList.remove("slds-hide");
+		document
+			.getElementById("relatedResourcesSection")
+			.classList.remove("slds-hide");
+	} else {
+		document
+			.getElementById("validationStatusSection")
+			.classList.add("slds-hide");
+		document
+			.getElementById("createdMetaDateSection")
+			.classList.add("slds-hide");
+		document
+			.getElementById("lastModifiedMetaByUser")
+			.classList.add("slds-hide");
+		document
+			.getElementById("lastModifiedByUser")
+			.classList.add("slds-hide");
+		document
+			.getElementById("caseAttachCountSection")
+			.classList.add("slds-hide");
+		document.getElementById("articleSMESection").classList.add("slds-hide");
+		document
+			.getElementById("airwatchtopicsSection")
+			.classList.add("slds-hide");
+		document
+			.getElementById("articlePRLinksSection")
+			.classList.add("slds-hide");
+		document
+			.getElementById("socialcaseMsgSection")
+			.classList.add("slds-hide");
+		document.getElementById("linktoSRSection").classList.add("slds-hide");
+		document
+			.getElementById("relatedResourcesSection")
+			.classList.add("slds-hide");
+	}
+};
+
+kb.setMeta = function (meta) {
+	Object.keys(meta).forEach(function (key) {
+		kb.setContentForId(key, meta[key]);
+	});
+};
+
+kb.showLikes = function (noOfThumbs) {
+	kb.setContentForId("likes", "");
+	if (noOfThumbs && noOfThumbs > 0) {
+		let likescount = `<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36" height="16" width="16" fill="#007cbb" version="1.1">
+                    <title>thumbs-up-line</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M24,26c-2.92,1.82-7.3,4-9.37,4h-6a16.68,16.68,0,0,1-3.31-6.08A26.71,26.71,0,0,1,4,16h9V6a2.05,2.05,0,0,1,1.26-1.69c.77,2,2.62,6.57,4.23,8.72A11.39,11.39,0,0,0,24,16.91V14.78a9.13,9.13,0,0,1-3.91-3c-1.88-2.51-4.29-9.11-4.31-9.17A1,1,0,0,0,14.59,2C13.25,2.38,11,3.6,11,6v8H3a1,1,0,0,0-1,1,29,29,0,0,0,1.4,9.62c1.89,5.4,4.1,7.14,4.2,7.22a1,1,0,0,0,.61.21h6.42c2.43,0,6.55-2,9.37-3.63Z"></path><path class="clr-i-outline clr-i-outline-path-2" d="M34,31H27a1,1,0,0,1-1-1V14a1,1,0,0,1,1-1h7Zm-6-2h4V15H28Z"></path>
+                    <rect fill-opacity="0" height="36" width="36" y="0" x="0"></rect>
+              	 </svg>
+				<span style="position: relative; top: 2px;">${noOfThumbs}</span>`;
+		kb.setContentForId("likes", likescount);
+	}
+};
+
+kb.showMTBanner = function (isMachineTranslation) {
+	kb.setContentForId("mtDisclaimer", "");
+	if (isMachineTranslation) {
+		let language = articleView.lang.toLowerCase();
+		let alertText = alertMessages[language];
+		let bannerContent = `
+		<div class="alert alert-warning">
+			<div class="alert-items">
+				<div class="alert-item">
+					<div class="alert-icon-wrapper">
+						<svg version="1.1" fill="#666" width="24" height="24" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<title>{!v.title}</title>
+							<path class="clr-i-outline clr-i-outline-path-1" d="M18,6A12,12,0,1,0,30,18,12,12,0,0,0,18,6Zm0,22A10,10,0,1,1,28,18,10,10,0,0,1,18,28Z"></path><path class="clr-i-outline clr-i-outline-path-2" d="M18,20.07a1.3,1.3,0,0,1-1.3-1.3v-6a1.3,1.3,0,1,1,2.6,0v6A1.3,1.3,0,0,1,18,20.07Z"></path><circle class="clr-i-outline clr-i-outline-path-3" cx="17.95" cy="23.02" r="1.5"></circle>
+							<rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+						</svg>
+					</div>
+					<span class="alert-text">${alertText}</span>
+				</div>
+			</div>
+		</div>`;
+		if (alertText) {
+			kb.setContentForId("mtDisclaimer", bannerContent);
+		}
+	}
+};
+
+kb.showSkylineNomination = function (isSkylineNominated) {
+	if (isSkylineNominated) {
+		document.getElementById("skyline").classList.remove("slds-hide");
+	}
+};
+
+kb.setLastModified = function (dateStr) {
+	let lmd = new Date(dateStr.replace(/-/g, "/")); //Safari Issue fix
+	kb.setContentForId("lastModifiedDate", lmd.toLocaleDateString());
+	kb.setContentForId("lastModifiedMetaDate", lmd.toDateString().substring(4));
+};
+
+//iKB Specific - to set the createdDate in specific DD/MM/YYYY format
+kb.setCreatedDate = function (createdDateStr) {
+	let lmd = new Date(createdDateStr);
+	kb.setContentForId("createdMetaDate", lmd.toDateString().substring(4));
+};
+
+kb.setContent = function (content) {
+	let allContent = "";
+	for (const field of content) {
+		Object.keys(field).forEach(function (title) {
+			let content = field[title];
+			content = content.trim();
+			if (content.length < 5) {
+				return;
+			}
+			
+			content_field = `
+            <div class="container">
+            <div class="header section_header slds-p-top_large slds-p-bottom_xx-small" style="cursor: pointer">
+            <span id="chevronContainer">
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 36 36" fill="#0095d3" height="20" width="20" class="chevron-down" id="chevronDiagram" version="1.1"><path d="M29.52,22.52,18,10.6,6.48,22.52a1.7,1.7,0,0,0,2.45,2.36L18,15.49l9.08,9.39a1.7,1.7,0,0,0,2.45-2.36Z"></path><rect fill-opacity="0" height="36" width="36" y="0" x="0"></rect></svg>
+            </span>
+            ${title}
+            </div>
+            <div class="content">${content}</div>
+            </div>
+            <div class="page-break"></div>`;
+			allContent += content_field;
+		});
+	}
+	kb.setContentForId("article_content", allContent);
+	document.getElementById("spinner").classList.add("slds-hide");
+	document.getElementById("content").classList.remove("slds-hide");
+};
+
+kb.setProducts = function (products) {
+	document.getElementById("articleProducts").classList.add("slds-hide");
+
+	if (
+		products.relatedProducts.length < 1 &&
+		products.relatedVersions.length < 1
+	) {
+		return;
+	}
+
+	let chevronSvg = `<span>
+			<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" id = "chevron" class="chevron-down" viewBox="0 0 36 36" height="12" width="12" fill="rgb(0, 149, 211)" version="1.1">
+					<path d="M29.52,22.52,18,10.6,6.48,22.52a1.7,1.7,0,0,0,2.45,2.36L18,15.49l9.08,9.39a1.7,1.7,0,0,0,2.45-2.36Z"></path>
+					<rect fill-opacity="0" height="12" width="12" y="0" x="0"></rect>			 		
+			</svg>
+		</span>`;
+
+	kb.setContentForId("relatedProducts", "");
+	document.getElementById("relatedProductsInfo").classList.add("slds-hide");
+
+	if (products.relatedProducts.length > 0) {
+		let names = products.relatedProducts;
+		if (names.length > 8) {
+			product_names = '<ul class="product_names unstyled">';
+			for (let index = 0; index < names.length; index++) {
+				if (index == 8) {
+					product_names += '<span class ="slds-hide">';
+				}
+				product_names += "<li>" + names[index] + "</li>";
+			}
+			product_names +=
+				'</span><span id="viewAllLink"><a style="text-decoration: none;">' +
+				chevronSvg +
+				"<span>view all</span></a></span></ul>";
+		} else {
+			product_names = `<ul class="product_names unstyled">
+			${names.map((name) => `<li>${name}</li>`).join("")}
+			</ul>`;
+		}
+		kb.setContentForId("relatedProducts", product_names);
+		document
+			.getElementById("relatedProductsInfo")
+			.classList.remove("slds-hide");
+	}
+
+	kb.setContentForId("relatedVersions", "");
+	document.getElementById("relatedVersionInfo").classList.add("slds-hide");
+
+	if (products.relatedVersions.length > 0) {
+		let names = products.relatedVersions;
+		if (names.length > 8) {
+			product_versions = '<ul class="product_versions unstyled">';
+			for (let index = 0; index < names.length; index++) {
+				if (index == 8) {
+					product_versions += '<span class ="slds-hide">';
+				}
+				product_versions += "<li>" + names[index] + "</li>";
+			}
+			product_versions +=
+				'</span><span id="viewAllVersionsLink"><a style="text-decoration: none;">' +
+				chevronSvg +
+				"<span>view all</span></a></span></ul>";
+		} else {
+			product_versions = `<ul class="product_versions unstyled">
+			${names.map((name) => `<li>${name}</li>`).join("")}
+			</ul>`;
+		}
+		kb.setContentForId("relatedVersions", product_versions);
+		document
+			.getElementById("relatedVersionInfo")
+			.classList.remove("slds-hide");
+	}
+	document.getElementById("articleProducts").classList.remove("slds-hide");
+};
+
+kb.setAttachments = function (attachments) {
+	document.getElementById("articleAttachments").classList.add("slds-hide");
+
+	kb.setContentForId("attachments_list", "");
+	if (attachments.length < 1) {
+		return;
+	}
+	const attachedFiles = `<ul class="attachments unstyled">
+    ${attachments
+		.map(
+			(
+				attach
+			) => `<li><a class="attachmentLink" href="${articleView.linkPrefix}${attach.resourceURL}" download>
+                <svg version="1.1" fill="#0095d3" width="16" height="14.6" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path class="clr-i-outline clr-i-outline-path-1" d="M8.42,32.6A6.3,6.3,0,0,1,4,30.79l-.13-.13A6.2,6.2,0,0,1,2,26.22,6.77,6.77,0,0,1,4,21.4L19.5,6.07a8.67,8.67,0,0,1,12.15-.35A8,8,0,0,1,34,11.44a9,9,0,0,1-2.7,6.36L17.37,31.6A1,1,0,1,1,16,30.18L29.89,16.38A7,7,0,0,0,32,11.44a6,6,0,0,0-1.76-4.3,6.67,6.67,0,0,0-9.34.35L5.45,22.82A4.78,4.78,0,0,0,4,26.22a4.21,4.21,0,0,0,1.24,3l.13.13a4.64,4.64,0,0,0,6.5-.21L25.22,15.94A2.7,2.7,0,0,0,26,14a2.35,2.35,0,0,0-.69-1.68,2.61,2.61,0,0,0-3.66.13l-9.2,9.12a1,1,0,1,1-1.41-1.42L20.28,11a4.62,4.62,0,0,1,6.48-.13A4.33,4.33,0,0,1,28,14a4.68,4.68,0,0,1-1.41,3.34L13.28,30.58A6.91,6.91,0,0,1,8.42,32.6Z"></path>
+                <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+                </svg>
+                ${attach.title}
+                </a></li>`
+		)
+		.join("")}</ul>`;
+	kb.setContentForId("attachments_list", attachedFiles);
+	document.getElementById("articleAttachments").classList.remove("slds-hide");
+};
+
+kb.setLanguages = function (languages) {
+	const languageSelect = `<select id="languagePicker" class="slds-select" name="languagePicker">
+                ${Object.keys(languages)
+					.map(
+						(language) =>
+							`<option value="${language.toLowerCase()}" ${
+								language.toLowerCase() ==
+								articleView.lang.toLowerCase()
+									? `selected="selected"`
+									: ""
+							}>${languages[language]}</option>`
+					)
+					.join("")}
+                        </select>`;
+	kb.setContentForId("languageSelect", languageSelect);
+	kb.setContentForId("languageSelectHeaderSection", languageSelect);
+
+	document.querySelector("#languageSelect select").onchange =
+		kb.actions.selectLanguage;
+	document.querySelector("#languageSelectHeaderSection select").onchange =
+		kb.actions.selectLanguage;
+};
+
+kb.setPageMeta = function () {
+	kb.createMeta("http-equiv", "Content-Language", articleView.lang);
+	if (articleView.response.meta.robots.length > 0) {
+		kb.createMeta("name", "robots", articleView.response.meta.robots);
+	}
+
+	let permaLink =
+		window.location.origin +
+		window.location.pathname +
+		(articleView.lang ? "?lang=" + articleView.lang : "");
+
+	var desc = articleView.response.meta.summary;
+	document.title = articleView.response.meta.articleInfo.title;
+	desc = desc.replace(articleView.docid + ",", "").trim();
+	desc = desc.substring(0, 160);
+
+	var products =
+		articleView.response.meta.articleProducts.relatedProducts.join(",") +
+		articleView.response.meta.articleProducts.relatedVersions.join(",");
+
+	kb.createMeta("property", "og:url", permaLink);
+	kb.createMeta(
+		"property",
+		"og:title",
+		articleView.response.meta.articleInfo.title
+	);
+	kb.createMeta("property", "og:description", desc);
+	kb.createMeta("property", "og:tag", products);
+	kb.createMeta("name", "twitter:description", desc);
+	kb.createMeta(
+		"name",
+		"twitter:title",
+		articleView.response.meta.articleInfo.title
+	);
+	kb.createMeta("name", "twitter:card", desc);
+	kb.createMeta("property", "article:tag", products);
+	kb.createMeta(
+		"property",
+		"article:section",
+		articleView.response.meta.articleInfo.articleCategory
+	);
+	kb.createMeta("name", "product_versions", products);
+	kb.createMeta("name", "language", articleView.lang);
+	kb.createMeta(
+		"name",
+		"views",
+		articleView.response.meta.articleInfo.articleViews
+	);
+	kb.createMeta(
+		"name",
+		"modified",
+		articleView.response.meta.articleInfo.lastModifiedDate
+	);
+	kb.createMeta(
+		"property",
+		"article:published_time",
+		articleView.response.meta.articleInfo.lastModifiedDate
+	);
+	kb.createMeta(
+		"property",
+		"article:modified_time",
+		articleView.response.meta.articleInfo.lastModifiedDate
+	);
+	kb.createMeta(
+		"property",
+		"published",
+		articleView.response.meta.articleInfo.lastModifiedDate
+	);
+	kb.createMeta(
+		"property",
+		"modified",
+		articleView.response.meta.articleInfo.lastModifiedDate
+	);
+	kb.createMeta(
+		"name",
+		"published",
+		articleView.response.meta.articleInfo.lastModifiedDate
+	);
+	kb.createMeta(
+		"property",
+		"created",
+		articleView.response.meta.articleInfo.createdDate
+	);
+	kb.setJSON_LD(desc);
+};
+
+kb.setJSON_LD = function (desc) {
+	/****ld/json*****/
+	var script = document.createElement("script");
+	var jsonld = {
+		"@context": "http://schema.org",
+		"@type": "TechArticle",
+		datePublished: articleView.response.meta.articleInfo.createdDate,
+		datemodified: articleView.response.meta.articleInfo.lastModifiedDate,
+		author: "VMware",
+		mainEntityOfPage: "True",
+		headline: articleView.response.meta.articleInfo.title,
+		description: desc,
+		image: {
+			"@type": "imageObject",
+			url: "https://kb.vmware.com/resource/KBsearchHeaderLogo",
+		},
+		publisher: {
+			"@type": "Organization",
+			name: "VMware",
+			logo: {
+				"@type": "imageObject",
+				url: "https://kb.vmware.com/resource/KBsearchHeaderLogo",
+			},
+		},
+	};
+	//Add attributes
+	script.type = "application/ld+json";
+	script.innerHTML = JSON.stringify(jsonld);
+	document.head.appendChild(script);
+};
+
+kb.setContentForId = function (id, content) {
+	let node = document.getElementById(id);
+	if (node === null) {
+		return;
+	}
+	node.innerHTML = content;
+};
+
+kb.createMeta = function (attrType, attrValue, content) {
+	var mtt = document.createElement("meta");
+	mtt.setAttribute(attrType, attrValue);
+	mtt.content = content;
+	document.head.appendChild(mtt);
+};
+
+kb.hideDefaultSpinner = function () {
+	spinner = document.querySelector(".siteforceSpinnerManager");
+	if (spinner === null) {
+		return;
+	}
+	spinner.remove();
+};
+
+kb.redirectPage = function (targetArticle) {
+	if (targetArticle) {
+		if (!window.location.pathname.toLowerCase().includes("/s/article")) {
+			return;
+		}
+
+		let path = window.location.pathname.split("/");
+		if (path.length > 0) {
+			if (path[1] != "s") {
+				if (!window.location.pathname.toLowerCase().startsWith("/kb")) {
+					let newLocation =
+						window.location.origin + "/s/article" + targetArticle;
+					kb.changeLocation(newLocation);
+				} else {
+					let newLocation =
+						window.location.origin +
+						"/kb/s/article" +
+						targetArticle;
+					kb.changeLocation(newLocation);
+				}
+			} else {
+				let newLocation =
+					window.location.origin + "/s/article" + targetArticle;
+				kb.changeLocation(newLocation);
+			}
+		}
+	}
+};
+
+kb.addActions = function () {
+	document.getElementById("copyLink").onclick = kb.actions.copyLink;
+	document.getElementById("printPage").onclick = kb.actions.printPage;
+	document
+		.getElementById("article_content")
+		.addEventListener("click", kb.actions.collapseSection, false);
+	if (document.getElementById("viewAllLink")) {
+		document
+			.getElementById("viewAllLink")
+			.addEventListener(
+				"click",
+				kb.actions.toggleProductsVisibility,
+				false
+			);
+	}
+	if (document.getElementById("viewAllVersionsLink")) {
+		document
+			.getElementById("viewAllVersionsLink")
+			.addEventListener(
+				"click",
+				kb.actions.toggleProductsVisibility,
+				false
+			);
+	}
+	document.body
+		.querySelector("article")
+		.addEventListener("click", function (e) {
+			try {
+				if (
+					e.target.localName == "a" &&
+					!e.target.classList.contains("attachmentLink") &&
+					e.target.hostname.toLowerCase() ==
+						window.location.hostname.toLowerCase() &&
+					e.target.target != "_blank"
+				) {
+					e.preventDefault();
+					let newLocation = e.target.href;
+					kb.changeLocation(newLocation);
+				}
+			} catch (ex) {
+				console.log("Exception : ", ex);
+			}
+		});
+};
+
+kb.actions = {
+	collapseSection: function (e) {
+		var clickedHeader = {};
+		if (
+			e.target.classList.contains("section_header") ||
+			e.target.id == "chevronContainer"
+		) {
+			clickedHeader = e.target;
+			if (e.target.id == "chevronContainer") {
+				clickedHeader = e.target.parentElement;
+			}
+		} else {
+			return;
+		}
+
+		if (
+			clickedHeader === null ||
+			clickedHeader.nextElementSibling === null
+		) {
+			return;
+		}
+		var icon = clickedHeader.querySelector("svg");
+		if (clickedHeader.nextElementSibling.style.display == "none") {
+			clickedHeader.nextElementSibling.style.display = "";
+			if (icon) {
+				icon.classList.add("chevron-down");
+				icon.classList.remove("chevron-right");
+			}
+		} else {
+			clickedHeader.nextElementSibling.style.display = "none";
+			if (icon) {
+				icon.classList.add("chevron-right");
+				icon.classList.remove("chevron-down");
+			}
+		}
+		e.preventDefault();
+	},
+	copyLink: function () {
+		var holdtxt = document.getElementById("permaLink");
+
+		//iKB specific - copy link
+		let origin = window.location.origin;
+		let pathname = window.location.pathname;
+
+		if (origin.includes("ikb")) {
+			origin = origin.replace("ikb", "kb");
+		}
+		if (pathname.includes("ikb")) {
+			pathname = pathname.replace("ikb", "kb");
+		}
+
+		holdtxt.value =
+			origin +
+			pathname +
+			(articleView.lang ? "?lang=" + articleView.lang : "");
+
+		/* COV-888 - Start */
+
+		holdtxt.focus();
+		holdtxt.type = "text";
+		holdtxt.select();
+		/* COV-888 - End */
+		document.queryCommandSupported("copy");
+		document.execCommand("copy");
+		holdtxt.type = "hidden";
+		setTimeout(function () {
+			document.getElementById("showText").style.display = "inline";
+		}, 500);
+		setTimeout(function () {
+			document.getElementById("showText").style.display = "none";
+		}, 4000);
+	},
+	printPage: function () {
+		window.print();
+	},
+	selectLanguage: function (e) {
+		let lang = e.target.value;
+		if (
+			lang.length > 0 &&
+			lang.toLowerCase() != articleView.lang.toLowerCase()
+		) {
+			let newLocation =
+				window.location.origin +
+				window.location.pathname +
+				"?lang=" +
+				lang;
+			kb.changeLocation(newLocation);
+		}
+	},
+	toggleProductsVisibility: function (e) {
+		if (e.target && !e.target.innerHTML.startsWith("view")) {
+			return;
+		}
+		let expandLink = e.target;
+		let moreProducts = expandLink.parentNode.parentNode.previousSibling;
+		let chevronIcon = e.target.previousSibling.firstChild.nextSibling;
+
+		if (moreProducts && moreProducts.classList.contains("slds-hide")) {
+			moreProducts.classList.remove("slds-hide");
+			expandLink.innerHTML = "view less";
+			chevronIcon.classList.remove("chevron-down");
+		} else {
+			moreProducts.classList.add("slds-hide");
+			expandLink.innerHTML = "view all";
+			chevronIcon.classList.add("chevron-down");
+		}
+	},
+};
+
+kb.changeLocation = function (newLocation) {
+	if (window.location.href === newLocation) {
+		return;
+	}
+	window.history.pushState({}, "", newLocation);
+	window.scroll({
+		top: 100,
+		left: 0,
+		behavior: "smooth",
+	});
+	document.getElementById("spinner").classList.remove("slds-hide");
+	//kb.init()
+	window.dispatchEvent(new Event("popstate"));
+	kb.hideDefaultSpinner();
+};
+
+kb.observeTitle = function () {
+	var target = document.querySelector("head > title");
+	var titleTimeout = {};
+	var observer = new MutationObserver(function (mutations) {
+		window.clearTimeout(titleTimeout);
+		titleTimeout = window.setTimeout(function () {
+			mutations.forEach(function (mutation) {
+				if (
+					window.location.pathname
+						.toLowerCase()
+						.includes("/s/article") &&
+					articleView.response.meta !== undefined &&
+					mutation.target.innerText !=
+						articleView.response.meta.articleInfo.title
+				) {
+					document.title =
+						articleView.response.meta.articleInfo.title;
+				}
+			});
+		}, 1000);
+	});
+
+	var config = {
+		childList: true,
+		subtree: false,
+		characterData: false,
+	};
+	observer.observe(target, config);
+};
+
+kb.init();
+kb.observeTitle();
+kb.hideDefaultSpinner();
+
+window.addEventListener("popstate", function (event) {
+	//iKB Specific - bypassed API call in case of content reload(Ex. Lamguage change)
+	if (!articleView.isInternal) {
+		kb.init();
+		kb.hideDefaultSpinner();
+	}
+});
+
+//iKB Specific - to get the content from lighting component
+window.addEventListener("getArtilcleDetails", function (event) {
+	articleView = event.detail;
+	kb.getContent(articleView);
+	kb.hideDefaultSpinner();
+});

@@ -1,0 +1,505 @@
+var hyperlink;
+var subscribe;
+var loginbutton;
+var logoutbutton;
+var feedbackyes;
+var feedbackno;
+var lang_change;
+var seeWhatsNew;
+var add_res;
+var searchApplied;
+var searchApplied_1;
+var topicEntered;
+var properties;
+var one = true;
+var filter_source = [];
+var filter_product = [];
+var filter_language = [];
+var filter_verison = [];
+var filter_dateStart = '';
+var filter_dateEnd = '';
+var filter_Saved_button;
+var events = {
+	"singned_up": {
+		event_name: "Signed Up",
+		eventProp: {
+			username: "",
+			email: "",
+		}
+	},
+	"logged_in": {
+		eventName: "Logged In",
+		eventProp: {
+			username: "",
+			email: "",
+		}
+	},
+	"logged_out": {
+		eventName: "Logged Out",
+		eventProp: {
+			username: "",
+			email: "",
+		}
+	},
+	"article_viewed": {
+		eventName: "Article Viewed",
+		eventProp: {
+			article_id: "",
+			article_name: "",
+			category: "",
+			likes: "",
+			related_versions: "",
+			language: "",
+			created_at: "",
+			total_views: "",
+			url: "",
+			last_updated: ""
+		}
+	},
+	"article_completed": {
+		eventName: "Article Completed",
+		eventProp: {
+			article_id: "",
+			article_name: "",
+		}
+	},
+	"article_copied": {
+		eventName: "Article Copied",
+		eventProp: {
+			article_id: "",
+			article_name: "",
+		}
+	},
+	"article_printed": {
+		eventName: "Article Printed",
+		eventProp: {
+			article_id: "",
+			article_name: "",
+		}
+	},
+	"article_subscribed": {
+		eventName: "Article Subscribed",
+		eventProp: {
+			article_id: "",
+			article_name: "",
+		}
+	},
+	"article_unsubscribed": {
+		eventName: "Article Unsubscribed",
+		eventProp: {
+			article_id: "",
+			article_name: "",
+		}
+	},
+	"topic_searched": {
+		eventName: "Topic Searched",
+		eventProp: {
+			query: "",
+			url: ""
+		}
+	},
+	"see_whats_new_clicked": {
+		eventName: "See Whats New Clicked",
+		eventProp: {
+			url: "",
+		}
+	},
+	"language_changed": {
+		eventName: "Language Changed",
+		eventProp: {
+			previous_language: "",
+			new_language: ""
+		}
+	},
+	"additional_resource_selected": {
+		eventName: "Additional Resource Selected",
+		eventProp: {
+			article_id: "",
+			article_name: "",
+		}
+	}
+}
+
+var langmap = {
+	en_us : "English",
+	zh_cn : "Chinese (Simplified)",
+	fr : "French",
+	de : "German",
+	ja : "Japanese",
+	pt_pt : "Portuguese (European)",
+	pt_br : "Portuguese (Brazil)",
+	ko : "Korean",
+	es : "Spanish"
+}
+
+function init_load() {
+	hyperlink = document.querySelectorAll('.articleInfoLink');
+	subscribe = document.querySelector('[class="slds-p-left_medium slds-p-right_xx-small"]');
+	loginbutton = document.querySelector('button');
+	logoutbutton = document.querySelector('.logout');
+	feedbackyes = document.querySelector('.RectangleYes');
+	feedbackno = document.querySelector('.RectangleNO');
+	lang_change = document.getElementsByName("languagePicker")[0];
+	seeWhatsNew = document.querySelector('.slds-button_neutral');
+	add_res = document.querySelectorAll('.coveo-title');
+	searchApplied = document.querySelector('.CoveoSearchButton');
+	searchApplied_1 = document.querySelectorAll('.queries-history-item-caption');
+	topicEntered = document.querySelector('[title="Insert a query. Press enter to send"]');
+	allFilter = document.querySelectorAll('.coveo-facet-breadcrumb');
+	filter_Saved_button = document.querySelector('[title="Save Filter Preferences"]');
+
+	//parameteres assignment on load
+	properties = {
+		username: (document.getElementById("username") === undefined || document.getElementById("username") === null) ? "null" : document.getElementById("username").innerHTML, //loginLink
+		email: (document.getElementById("email") === undefined || document.getElementById("email") === null) ? "null" : document.getElementById("email").innerHTML, //LoginLink
+		article_id: articleView.docid, //ArticleDetail
+		article_name: articleView.response.meta.articleInfo.title, //ArticleDetail
+		category: articleView.response.meta.articleInfo.articleCategory, //ArticleDetail
+		likes: articleView.response.meta.articleInfo.thumbsUp, //ArticleDetail
+		//related_versions: (document.getElementById("hideText") === undefined || document.getElementById("hideText") === null) ? "null" : versions(), //no change
+		related_versions: articleView.response.meta.articleProducts.relatedVersions.toString(),
+		language: langmap[articleView.lang.toLowerCase()], //meta
+		created_at: articleView.response.meta.articleInfo.createdDate, //meta
+		total_views: articleView.response.meta.articleInfo.articleViews, //meta
+		url: window.location.href,
+		last_updated: articleView.response.meta.articleInfo.lastModifiedDate, //meta
+		query: (window.location.href.split('q=')[1] === undefined || window.location.href.split('q=')[1] === null) ? "null" : window.location.href.split('q=')[1].split('&')[0],
+		previous_language: getStoredValue('pre_lang'),
+		new_language: langmap[articleView.lang.toLowerCase()] //meta
+	}
+
+	//Loop to assgin parameters in the Event from properties
+	for (var eventName in events) {
+		for (var p in events[eventName].eventProp) {
+			events[eventName].eventProp[p] = properties[p];
+		}
+	}
+	//Additional Resource clciked
+	if (getStoredValue('addreso')) {
+		callTracker(events["additional_resource_selected"]);
+		removeStoredValue('addreso');
+	}
+	//Langauge change call
+	if (getStoredValue('pre_lang')) {
+		callTracker(events["language_changed"]);
+		removeStoredValue('pre_lang');
+	}
+	//Login Event call
+	var login = getStoredValue('login');
+	if (login == 1) {
+		callTracker(events["logged_in"]);
+		removeStoredValue('login');
+	}
+}
+window.addEventListener('load', (event) => {
+	if(!window.location.host.startsWith('kb.vmware.com')){
+		return
+	}
+	setTimeout(function () {
+		init_load();
+		articleViewed();
+		eventsLoad();
+		//filter_saved();
+	}, 8000);
+	storeValue('sort', 'R');
+});
+window.addEventListener('hashchange', (event) => {
+	if(!window.location.host.startsWith('kb.vmware.com')){
+		return
+	}
+	setTimeout(function () {
+		init_load();
+		sortApp();
+		filter_Applied();
+		filter_saved();
+	}, 3000);
+});
+
+function sortApp() {
+	//Article Viwed Action
+	if (location.pathname.includes("/s/global-search/") && (window.location.href.split('sort=')[1] !== undefined && window.location.href.split('sort=')[1] != null)) {
+		if (window.location.href.split('sort=')[1].includes("relevancy") && getStoredValue('sort') != 'R') {
+			analytics.track("Sort Applied", {
+				sort_type: "Relevancy"
+			});
+			storeValue('sort', 'R');
+		} else if (window.location.href.split('sort=')[1].includes("commondate") && getStoredValue('sort') != 'D') {
+			analytics.track("Sort Applied", {
+				sort_type: "Date"
+			});
+			storeValue('sort', 'D');
+		}
+	}
+}
+
+function articleViewed() {
+	//Article Viwed Action
+	if (location.pathname.includes("/s/article/")) {
+		callTracker(events["article_viewed"]);
+		//Article Completed  call
+		window.addEventListener("scroll", myScrollEnd);
+	}
+}
+//For page End once
+var myScrollEnd = debounce(function () {
+	if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+		callTracker(events["article_completed"]);
+		window.removeEventListener("scroll", myScrollEnd);
+	}
+}, 250);
+
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function () {
+		var context = this,
+			args = arguments;
+		var later = function () {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+}
+//Products Version Array to string
+function versions() {
+	var str = '';
+	var i = 0;
+	do {
+		if (document.getElementById("hideText").childNodes.length == (i + 1)) {
+			str += document.getElementById("hideText").childNodes[i].innerHTML;
+		} else {
+			str += document.getElementById("hideText").childNodes[i].innerHTML + ',';
+		}
+		i++;
+	} while (document.getElementById("hideText").childNodes.length > i)
+	return str;
+}
+//get target from fuction
+function callTracker(obj) {
+	var eventName = obj.eventName;
+	var eventParamerts = obj.eventProp;
+	if (eventName && eventParamerts) {
+		analytics.track(eventName, eventParamerts);
+	}
+}
+
+function eventsLoad() {
+	/**Copy Hyperlink events **/
+	if (hyperlink[0] !== undefined && hyperlink[0] != null) {
+		hyperlink[0].addEventListener('click', event => {
+			callTracker(events["article_copied"])
+		});
+	}
+	if (subscribe !== undefined && subscribe != null) {
+		subscribe.addEventListener('click', event => {
+			if (subscribe.innerText == " subscribed") {
+				callTracker(events["article_subscribed"]);
+			} else if (subscribe.innerText == " subscribe") {
+				callTracker(events["article_unsubscribed"]);
+			}
+		});
+	}
+	if (hyperlink[1] !== undefined && hyperlink[1] != null) {
+		hyperlink[1].addEventListener('click', event => {
+			callTracker(events["article_printed"])
+		});
+	}
+	//Login Event
+	if (loginbutton !== undefined && loginbutton != null) {
+		loginbutton.addEventListener('click', event => {
+			if (loginbutton.innerHTML === "Log In") {
+				storeValue('login', 1);
+			}
+		});
+	}
+	//Logout Event
+	if (logoutbutton !== undefined && logoutbutton != null) {
+		logoutbutton.addEventListener('click', event => {
+			if (logoutbutton.innerHTML === "Logout") {
+				callTracker(events["logged_out"]);
+			}
+		});
+	}
+	//Feedback yes/no Event
+	if (feedbackyes !== undefined && feedbackyes != null) {
+		feedbackyes.addEventListener('click', event => {
+			if (feedbackyes.innerText === "YES") {
+				analytics.track("Feedback Sent", {
+					response: "YES"
+				});
+				setTimeout(function () {
+					init_load();
+					eventsLoad();
+				}, 6000);
+			}
+		});
+	}
+	if (feedbackno !== undefined && feedbackno != null) {
+		feedbackno.addEventListener('click', event => {
+			if (feedbackno.innerText === "NO") {
+				analytics.track("Feedback Sent", {
+					response: "NO"
+				});
+			}
+		});
+	}
+	//Language change
+	if (lang_change !== undefined && lang_change != null) {
+		lang_change.addEventListener('change', event => {
+			storeValue('pre_lang', langmap[articleView.lang.toLowerCase()]);
+		});
+	}
+	//see wahts new Event
+	if (seeWhatsNew !== undefined && seeWhatsNew != null) {
+		seeWhatsNew.addEventListener('click', event => {
+			if (seeWhatsNew.innerText === "See What’s new") {
+				callTracker(events["see_whats_new_clicked"]);
+			}
+		});
+	}
+	//Additional Resource Event
+	if (add_res !== undefined && add_res != null) {
+		for (var addres of add_res) {
+			addres.addEventListener('click', event => {
+				storeValue('addreso', 1);
+			});
+		}
+	}
+	//Search bar event
+	if (searchApplied !== undefined && searchApplied != null) {
+		searchApplied.addEventListener('click', event => {
+			setTimeout(function () {
+				analytics.track("Topic Searched", {
+					query: (window.location.href.split('q=')[1] === undefined || window.location.href.split('q=')[1] === null) ? "null" : window.location.href.split('q=')[1].split('&')[0],
+					url: window.location.href
+				});
+			}, 3000);
+		});
+	}
+
+	if (searchApplied_1 !== undefined && searchApplied_1 != null) {
+		for (var i = 0; i < searchApplied_1.length; i++) {
+			searchApplied_1[i].addEventListener('click', event => {
+				setTimeout(function () {
+					analytics.track("Topic Searched", {
+						query: (window.location.href.split('q=')[1] === undefined || window.location.href.split('q=')[1] === null) ? "null" : window.location.href.split('q=')[1].split('&')[0],
+						url: window.location.href
+					});
+				}, 3000);
+			});
+		}
+	}
+	//search after enter key press
+	if (topicEntered !== undefined && topicEntered != null) {
+		topicEntered.addEventListener('keydown', event => {
+			if (event.code == 'Enter') { //Enter keycode
+				setTimeout(function () {
+					analytics.track("Topic Searched", {
+						query: (window.location.href.split('q=')[1] === undefined || window.location.href.split('q=')[1] === null) ? "null" : window.location.href.split('q=')[1].split('&')[0],
+						url: window.location.href
+					});
+				}, 3000);
+			}
+		});
+	}
+}
+//filter_Applied
+function filter_Applied() {
+	if (window.location.href.includes('commonsource') || window.location.href.includes('commonproduct') || window.location.href.includes('commonlanguage') || window.location.href.includes('commonversion') || window.location.href.includes('commondate')) {
+
+		filter_source = [];
+		filter_product = [];
+		filter_language = [];
+		filter_verison = [];
+		filter_dateStart = '';
+		filter_dateEnd = '';
+
+		for (var i = 0; i < allFilter.length; i++) {
+			if (allFilter[i] !== undefined) {
+				if (allFilter[i].firstChild.innerText.includes('Source')) {
+					var s = allFilter[i].querySelectorAll('.coveo-facet-breadcrumb-caption');
+					for (var j = 0; j < s.length; j++) {
+						filter_source.push(s[j].innerText);
+					}
+				}
+				if (allFilter[i].firstChild.innerText.includes('Product')) {
+					var s = allFilter[i].querySelectorAll('.coveo-facet-breadcrumb-caption');
+					for (var j = 0; j < s.length; j++) {
+						filter_product.push(s[j].innerText);
+					}
+				}
+				if (allFilter[i].firstChild.innerText.includes('Version')) {
+					var s = allFilter[i].querySelectorAll('.coveo-facet-breadcrumb-caption');
+					for (var j = 0; j < s.length; j++) {
+						filter_verison.push(s[j].innerText);
+					}
+				}
+				if (allFilter[i].firstChild.innerText.includes('Language')) {
+					var s = allFilter[i].querySelectorAll('.coveo-facet-breadcrumb-caption');
+					for (var j = 0; j < s.length; j++) {
+						filter_language.push(s[j].innerText);
+					}
+				}
+				if (allFilter[i].firstChild.innerText.includes('Date')) {
+					var s = allFilter[i].querySelector('.coveo-facet-breadcrumb-caption');
+					filter_dateStart = s.innerText.split('-')[0].split(' ')[1];
+					filter_dateEnd = s.innerText.split('-')[1].split(' ')[2];
+				}
+			}
+
+		}
+		analytics.track("Filter Applied", {
+			source: filter_source,
+			product: filter_product,
+			version: filter_verison,
+			language: filter_language,
+			date_range_start: filter_dateStart,
+			date_range_end: filter_dateEnd
+		});
+	}
+}
+
+function filter_saved() {
+	if (filter_Saved_button && one) {
+		one = false;
+		filter_Saved_button.addEventListener('click', event => {
+			analytics.track("Filter Saved", {
+				source: filter_source,
+				product: filter_product,
+				version: filter_verison,
+				language: filter_language,
+				date_range_start: filter_dateStart,
+				date_range_end: filter_dateEnd
+			});
+		});
+	}
+}
+
+
+//function to store cookies
+function storeValue(key, value) {
+	if (localStorage) {
+		localStorage.setItem(key, value);
+	} else {
+		$.cookies.set(key, value);
+	}
+}
+//fuction to get cookies if any
+function getStoredValue(key) {
+	if (localStorage) {
+		return localStorage.getItem(key);
+	} else {
+		return $.cookies.get(key);
+	}
+}
+//fuction to remove cookies if any
+function removeStoredValue(key) {
+	if (localStorage) {
+		localStorage.removeItem(key);
+	} else {
+		$.cookies.removeItem(key);
+	}
+}

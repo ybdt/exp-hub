@@ -1,0 +1,558 @@
+.CoveoResult .CoveoChatterThumbnail .coveo-chatter-thumbnail-img {
+  border-radius: 50%; }
+
+.CoveoResult .CoveoChatterThumbnail .coveo-chatter-thumbnail-placeholder {
+  text-align: center;
+  border-radius: 2px;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px; }
+
+.CoveoResult .coveo-salesforce-thumbnail-container.coveo-salesforce-thumbnail-placeholder {
+  text-align: center; }
+
+.CoveoResult .coveo-salesforce-thumbnail-container.coveo-salesforce-thumbnail-placeholder > img.coveo-salesforce-thumbnail-img {
+  display: none; }
+
+.CoveoSearchInterface.coveo-chat-ended .CoveoResultActionsSendLiveAgent {
+  display: none; }
+
+.CoveoResultActionsMenu {
+  display: none;
+  position: relative;
+  height: 1.5rem;
+  right: 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: -24px;
+  background: white; }
+  .CoveoResultActionsMenu .coveo-hidden {
+    display: none; }
+  .CoveoResultActionsMenu.coveo-menu-opened {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    float: right; }
+  .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item {
+    height: initial;
+    padding: 0 8px;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    border-left: 1px solid #ccc;
+    line-height: 1.5em; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item:first-child {
+      border-radius: 6px 0 0 6px; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item:last-child {
+      border-radius: 0 6px 6px 0; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item.coveo-hidden {
+      display: none; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item:not(.coveo-hidden):not([style*="display: none"]) {
+      border-left: none; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item:not(.coveo-hidden):not([style*="display: none"]) ~ .coveo-result-actions-menu-menu-item:not(.coveo-hidden):not([style*="display: none"]) {
+      border-left: thin solid #bcc3ca; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item:first-child {
+      border: transparent; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item.CoveoAttachToCase span {
+      visibility: visible;
+      height: 100%; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item .coveo-icon-for-quickview-svg {
+      margin: 0; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item:hover {
+      background-color: #f3f2f2; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item svg {
+      height: 16px;
+      width: 16px;
+      fill: #1d4f76;
+      vertical-align: middle; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item.CoveoQuickview:hover .coveo-caption-for-icon {
+      /* reset the value to initial for the quickview so popperjs can work properly. */
+      bottom: initial; }
+      .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item.CoveoQuickview:hover .coveo-caption-for-icon:before {
+        border: transparent; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item:hover .coveo-caption-for-icon {
+      display: inline;
+      bottom: 30px;
+      transform: translateX(-50%);
+      left: 50%; }
+    .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item .coveo-caption-for-icon {
+      font-size: 12px;
+      display: none;
+      background: #263e55;
+      color: white;
+      border-radius: 2px;
+      padding: 6px 16px;
+      position: absolute;
+      white-space: nowrap;
+      z-index: 99; }
+      .CoveoResultActionsMenu .coveo-result-actions-menu-menu-item .coveo-caption-for-icon:before {
+        border: solid;
+        border-color: #263e55 transparent;
+        border-width: 7px 6px 0;
+        content: "";
+        position: absolute;
+        z-index: 99;
+        bottom: -6px;
+        top: initial;
+        left: calc(50% - 6px); }
+
+.CoveoResultActionsPostToFeed,
+.CoveoResultActionsSendEmail,
+.CoveoResultActionsSendLiveAgent,
+.CoveoResultQuickAction {
+  cursor: pointer;
+  position: relative;
+  margin: 0 0 0 0.5em;
+  line-height: 1.5em;
+  text-align: center; }
+  .CoveoResultActionsPostToFeed svg,
+  .CoveoResultActionsSendEmail svg,
+  .CoveoResultActionsSendLiveAgent svg,
+  .CoveoResultQuickAction svg {
+    height: 16px;
+    width: 16px;
+    fill: #1d4f76;
+    vertical-align: middle; }
+  .CoveoResultActionsPostToFeed.coveo-hidden,
+  .CoveoResultActionsSendEmail.coveo-hidden,
+  .CoveoResultActionsSendLiveAgent.coveo-hidden,
+  .CoveoResultQuickAction.coveo-hidden {
+    display: none; }
+  .CoveoResultActionsPostToFeed > span,
+  .CoveoResultActionsSendEmail > span,
+  .CoveoResultActionsSendLiveAgent > span,
+  .CoveoResultQuickAction > span {
+    display: inline-block; }
+  .CoveoResultActionsPostToFeed:hover .coveo-caption-for-icon,
+  .CoveoResultActionsSendEmail:hover .coveo-caption-for-icon,
+  .CoveoResultActionsSendLiveAgent:hover .coveo-caption-for-icon,
+  .CoveoResultQuickAction:hover .coveo-caption-for-icon {
+    display: inline;
+    bottom: 26px;
+    transform: translateX(-50%);
+    left: 50%; }
+  .CoveoResultActionsPostToFeed .coveo-caption-for-icon,
+  .CoveoResultActionsSendEmail .coveo-caption-for-icon,
+  .CoveoResultActionsSendLiveAgent .coveo-caption-for-icon,
+  .CoveoResultQuickAction .coveo-caption-for-icon {
+    font-size: 12px;
+    display: none;
+    background: #263e55;
+    color: white;
+    border-radius: 2px;
+    padding: 6px 16px;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 99; }
+    .CoveoResultActionsPostToFeed .coveo-caption-for-icon:before,
+    .CoveoResultActionsSendEmail .coveo-caption-for-icon:before,
+    .CoveoResultActionsSendLiveAgent .coveo-caption-for-icon:before,
+    .CoveoResultQuickAction .coveo-caption-for-icon:before {
+      border: solid;
+      border-color: #263e55 transparent;
+      border-width: 7px 6px 0;
+      content: "";
+      position: absolute;
+      z-index: 99;
+      bottom: -6px;
+      top: initial;
+      left: calc(50% - 6px); }
+
+/*
+* @param direction vertical or horizontal
+* @param position type of positioning to apply (relative/absolute)
+*/
+/*
+* @param $selector css selector on which to apply the icon. Can be '&' if the icon should be applied on the current element;
+* @param $size size of the icon to use
+*/
+@-webkit-keyframes coveo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-moz-keyframes coveo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-o-keyframes coveo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes coveo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@-webkit-keyframes smooth-spin {
+  from {
+    transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg); } }
+
+@-moz-keyframes smooth-spin {
+  from {
+    transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg); } }
+
+@-o-keyframes smooth-spin {
+  from {
+    transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes smooth-spin {
+  from {
+    transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg); } }
+
+.coveo-label {
+  color: black;
+  font-size: 1em;
+  font-weight: normal; }
+
+.coveo-content {
+  color: black;
+  font-size: 1em; }
+
+.coveo-link {
+  color: #004990;
+  text-decoration: none; }
+  .coveo-link:hover {
+    text-decoration: underline; }
+
+.coveo-user-actions-opened .CoveoUserActions {
+  display: block; }
+
+.coveo-user-actions-opened .coveo-main-section {
+  display: none; }
+
+.CoveoUserActions {
+  display: none;
+  margin-top: 10px;
+  max-width: 1200px;
+  padding: 0 1em;
+  border: 1px solid #b5c4cf;
+  background-color: #f7f8f9; }
+  .CoveoUserActions > h1 {
+    color: #004990;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.5em 0; }
+  .CoveoUserActions .coveo-no-actions {
+    padding: 3em;
+    text-align: center; }
+  .CoveoUserActions .coveo-enable-prompt {
+    padding: 1.5em;
+    text-align: center; }
+  .CoveoUserActions .coveo-close {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    text-align: right; }
+  .CoveoUserActions-opened .coveo-user-actions {
+    display: block; }
+  .CoveoUserActions-opened .coveo-main-section {
+    display: none; }
+
+.coveo-expandable-list {
+  padding-bottom: 1.5em; }
+  .coveo-expandable-list .coveo-title {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0 0 0.75em;
+    text-transform: uppercase; }
+  .coveo-expandable-list .coveo-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+    .coveo-expandable-list .coveo-list li .coveo-list-row {
+      display: flex; }
+      .coveo-expandable-list .coveo-list li .coveo-list-row a {
+        width: calc(100% - 24px);
+        margin-bottom: 7px; }
+      .coveo-expandable-list .coveo-list li .coveo-list-row .coveo-row-icon {
+        position: relative;
+        width: 24px; }
+        .coveo-expandable-list .coveo-list li .coveo-list-row .coveo-row-icon > svg {
+          position: absolute;
+          top: 2px;
+          height: 1em;
+          width: 1em; }
+  .coveo-expandable-list .coveo-more-less {
+    font-size: 0.9em;
+    border: 0;
+    padding: 0;
+    color: #004990;
+    text-decoration: underline;
+    font-weight: normal;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 0.5em;
+    margin-left: 24px; }
+
+.coveo-user-activity {
+  margin-top: 1em;
+  background-color: #f7f8f9; }
+  .coveo-user-activity .coveo-header {
+    font-size: 1em;
+    padding-bottom: 2em;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: flex-start; }
+    .coveo-user-activity .coveo-header .coveo-cell {
+      margin-right: 2em; }
+      .coveo-user-activity .coveo-header .coveo-cell:last-child {
+        margin-right: 0em; }
+    .coveo-user-activity .coveo-header .coveo-data {
+      margin-top: 1em;
+      font-weight: bold; }
+  .coveo-user-activity .coveo-activity {
+    margin: 0;
+    padding: 0 0 1.5em 0;
+    list-style-type: none; }
+    .coveo-user-activity .coveo-activity .coveo-data {
+      font-weight: bold; }
+    .coveo-user-activity .coveo-activity .coveo-folded {
+      cursor: pointer;
+      border: 0;
+      border-top: thin solid #cfd9e0;
+      border-bottom: thin solid #cfd9e0;
+      padding: 0.5em 0;
+      text-align: center; }
+      .coveo-user-activity .coveo-activity .coveo-folded hr {
+        height: 0;
+        border: 0;
+        border-bottom: thin solid #cfd9e0;
+        overflow: visible; }
+        .coveo-user-activity .coveo-activity .coveo-folded hr .coveo-text {
+          position: relative;
+          top: -0.5em;
+          display: inline-block;
+          vertical-align: top;
+          line-height: 1em;
+          height: 1em;
+          padding: 0 0.5em;
+          background-color: #f7f8f9; }
+    .coveo-user-activity .coveo-activity .coveo-bubble {
+      height: 1.5em;
+      border-left: thin solid #004990;
+      margin-left: 0.5em; }
+    .coveo-user-activity .coveo-activity .coveo-click a {
+      cursor: pointer;
+      color: #004990;
+      word-wrap: break-word;
+      text-decoration: none; }
+      .coveo-user-activity .coveo-activity .coveo-click a:hover {
+        text-decoration: underline; }
+    .coveo-user-activity .coveo-activity .coveo-click,
+    .coveo-user-activity .coveo-activity .coveo-search,
+    .coveo-user-activity .coveo-activity .coveo-custom,
+    .coveo-user-activity .coveo-activity .coveo-view {
+      position: relative;
+      margin-left: 0.5em;
+      border-left: thin solid #004990;
+      padding-left: 1.5em; }
+      .coveo-user-activity .coveo-activity .coveo-click .coveo-icon,
+      .coveo-user-activity .coveo-activity .coveo-search .coveo-icon,
+      .coveo-user-activity .coveo-activity .coveo-custom .coveo-icon,
+      .coveo-user-activity .coveo-activity .coveo-view .coveo-icon {
+        position: absolute;
+        left: -0.75em;
+        top: -0.1em;
+        padding: 0;
+        height: 1.5em;
+        width: 1.5em; }
+        .coveo-user-activity .coveo-activity .coveo-click .coveo-icon > svg,
+        .coveo-user-activity .coveo-activity .coveo-search .coveo-icon > svg,
+        .coveo-user-activity .coveo-activity .coveo-custom .coveo-icon > svg,
+        .coveo-user-activity .coveo-activity .coveo-view .coveo-icon > svg {
+          height: 1.5em;
+          width: 1.5em; }
+      .coveo-user-activity .coveo-activity .coveo-click > div,
+      .coveo-user-activity .coveo-activity .coveo-search > div,
+      .coveo-user-activity .coveo-activity .coveo-custom > div,
+      .coveo-user-activity .coveo-activity .coveo-view > div {
+        padding-bottom: 0.5em; }
+      .coveo-user-activity .coveo-activity .coveo-click:last-child,
+      .coveo-user-activity .coveo-activity .coveo-search:last-child,
+      .coveo-user-activity .coveo-activity .coveo-custom:last-child,
+      .coveo-user-activity .coveo-activity .coveo-view:last-child {
+        padding-bottom: 0;
+        border-left: 0; }
+
+.coveo-accordion:first-child {
+  border-top: 0; }
+  .coveo-accordion:first-child .coveo-accordion-header {
+    border-top: 0; }
+
+.coveo-accordion-header {
+  cursor: pointer;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 1px solid #b5c4cf;
+  padding: 1em 0; }
+  .coveo-accordion-header-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    width: auto; }
+  .coveo-accordion-header .coveo-arrow-down svg {
+    height: 1em;
+    fill: black;
+    transform: rotate(180deg);
+    width: 0.5em;
+    padding: 0.25em 0 0; }
+
+.coveo-accordion.coveo-folded .coveo-accordion-foldable {
+  display: none; }
+
+.coveo-accordion.coveo-folded .coveo-arrow-down svg {
+  transform: initial;
+  padding: 0 0 0.25em; }
+
+/**
+ * Ensure base css for button is present.
+ */
+.coveo-dropdown-header-wrapper {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  margin: 0px;
+  padding: 0px; }
+  .coveo-dropdown-header-wrapper .coveo-user-actions-dropdown-header {
+    border: thin solid #bcc3ca;
+    border-radius: 2px;
+    background-color: white; }
+  .coveo-dropdown-header-wrapper a {
+    margin-right: 10px; }
+  .coveo-dropdown-header-wrapper .coveo-dropdown-header {
+    font-size: 12px;
+    display: inline-block;
+    padding: 0 7px;
+    height: 22px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.09px;
+    vertical-align: middle;
+    white-space: normal;
+    color: #1d4f76;
+    cursor: pointer;
+    text-transform: uppercase; }
+    .coveo-dropdown-header-wrapper .coveo-dropdown-header p {
+      line-height: 16px; }
+    .coveo-dropdown-header-wrapper .coveo-dropdown-header * {
+      display: inline-block;
+      margin: 0; }
+
+/* hide after a query is made. */
+.coveo-after-initialization .coveo-hide-after-query {
+  display: none;
+  visibility: hidden; }
+
+/* show before a query is made. */
+.coveo-during-initialization .coveo-hide-after-query {
+  display: inherit;
+  visibility: inherit; }
+
+.CoveoResultsPreferences {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif;
+  font-size: 15px;
+  color: #373737; }
+
+.CoveoResultsFiltersPreferences {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif;
+  font-size: 15px;
+  color: #373737; }
+
+.coveo-modal-container.salesforce-quickview-modal-container .coveo-modal-body {
+  padding: 0; }
+  .coveo-modal-container.salesforce-quickview-modal-container .coveo-modal-body iframe {
+    border: transparent; }
+
+/* Override the salesforce classic override of the list item margin (ML Facets see SFINT-2376, SFINT-3021). */
+.coveo-dynamic-facet-values > *,
+.coveo-dynamic-hierarchical-facet-values > * {
+  margin-left: 0; }
+
+/* Override the Salesforce Classic override of the bolded buttons (see SFINT-3021) */
+.coveo-dynamic-hierarchical-facet-values button,
+.coveo-breadcrumb-items button {
+  font-weight: normal; }
