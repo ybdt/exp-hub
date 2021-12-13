@@ -7,5 +7,5 @@
 # 0x02-Windows提权
 01-hacking8的Windows提权在线辅助工具：https://i.hacking8.com/tiquan/  
 02-Kernelhub项目：https://github.com/Ascotbe/Kernelhub  
-03-SecWiki的windows-kernel-exploits项目：https://github.com/SecWiki/windows-kernel-exploits  
-04-uknowsec师傅的github下有多个提权项目：https://github.com/uknowsec  
+03-windows-kernel-exploits项目：https://github.com/SecWiki/windows-kernel-exploits  
+04-uknowsec师傅的github下多个提权项目：https://github.com/uknowsec  
