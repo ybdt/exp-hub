@@ -1,11 +1,11 @@
-### Windows提权
-1-hacking8的Windows提权辅助工具[在线提权检测](https://i.hacking8.com/tiquan/)  
-2-Kernelhub的Windows提权漏洞合集项目[官方地址](http://kernelhub.ascotbe.com/)，Kernelhub项目[Github地址](https://github.com/Ascotbe/Kernelhub)  
-3-SecWiki的[windows-kernel-exploits项目](https://github.com/SecWiki/windows-kernel-exploits)  
-4-uknowsec中的[提权项目](https://github.com/uknowsec)  
+# 0x01-Linux提权
+01-GTFOBins项目：https://gtfobins.github.io/  
+02-linux-exploit-suggester-2项目：https://github.com/jondonas/linux-exploit-suggester-2  
+03-CentOS7系统利用suid提权获取Root Shell：https://www.freebuf.com/articles/system/244627.html  
+04-atsud0师傅的Linux提权方式汇总：https://atsud0.me/2020/04/14/Linux%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F/  
 
-### Linux提权
-1、GTFOBins项目：https://gtfobins.github.io/  
-https://github.com/jondonas/linux-exploit-suggester-2  
-CentOS 7系统利用suid提权获取Root Shell：https://www.freebuf.com/articles/system/244627.html  
-https://atsud0.me/2020/04/14/Linux%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F/  
+# 0x02-Windows提权
+01-hacking8的Windows提权在线辅助工具：https://i.hacking8.com/tiquan/  
+02-Kernelhub项目：https://github.com/Ascotbe/Kernelhub  
+03-SecWiki的windows-kernel-exploits项目：https://github.com/SecWiki/windows-kernel-exploits  
+04-uknowsec师傅的github下有多个提权项目：https://github.com/uknowsec  
