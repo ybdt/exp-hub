@@ -6,5 +6,5 @@
 
 ### 2021/12/13
 有感于漏洞之多，复现不过来，故选择投身xray和goby两大阵营，与其自己一个一个复现漏洞，不如提交几个漏洞获取xray高级版和goby红队版，直接享用里面的poc库  
-![image](./pic/1.png)  
-![image](./pic/2.png)  
+![image](./xray.png)  
+![image](./goby.png)  
