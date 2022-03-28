@@ -34,3 +34,7 @@ victim如下图
 
 # 0x05-需要注意
 无
+
+# 0x06-参考链接
+https://www.changchen.cc/archives/73/  
+https://github.com/ce-automne/SunloginRCE  
