@@ -5,9 +5,9 @@
 
 ### 0x01-Web漏洞检测--AWVS
 AWVS发布版本：https://www.acunetix.com/support/build-history/  
-AWVS最新版本可使用其他师傅打包好的docker镜像，感谢这些师傅：）  
-地址：https://hub.docker.com/r/secfa/docker-awvs  
+AWVS最新版本可使用其他师傅打包好的docker镜像，感谢这些师傅：），地址：https://hub.docker.com/r/secfa/docker-awvs  
 docker安装问题可参考：https://github.com/ybdt/front-hub/tree/main/18-Docker  
+若收集的url结尾不是http://www.baidu.com或http://www.baidu.com或http://www.baidu.com/pinyin/，AWVS会提示检验错误，可使用脚本[beijixing-to-awvs-auxiliary.py](./auxiliary/beijixing-to-awvs-auxiliary.py)  
 ![image](./image/awvs.png)  
 
 ### 0x02-Web漏洞检测--Fscan
