@@ -12,21 +12,21 @@
 
 ### 01-漏洞检测--AWVS
 地址：https://www.acunetix.com/
-![image](./image/awvs.png)  
+![image](./README.image/awvs.png)  
 
 ### 02-漏洞检测--Fscan
 地址：https://github.com/shadow1ng/fscan  
-![image](./image/fscan.png)  
+![image](./README.image/fscan.png)  
 
 ### 03-漏洞检测--Xray高级版
 提交几个poc  
 xray地址：https://github.com/chaitin/xray  
-![image](./image/xray.png)  
+![image](./README.image/xray.png)  
 
 ### 04-漏洞检测--Goby红队版
 提交几个poc  
 goby地址：https://cn.gobies.org/  
-![image](./image/goby.png)  
+![image](./README.image/goby.png)  
 
 # 0x04-漏洞复现模板
 ```
