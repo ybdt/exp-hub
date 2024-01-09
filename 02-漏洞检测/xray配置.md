@@ -3,13 +3,13 @@
 修改worker数量，parallel: 100
 
 plugins部分
-将其中baseline中的子项全部改为false，同时想要排除掉某个poc，可在exclude_poc: [poc-yaml-go-pprof-leak]中添加
+将baseline中的子项全部改为false，同时想要排除掉某个poc，可在exclude_poc: [poc-yaml-go-pprof-leak]中添加
 
 reverse部分
-指定db_file_path和token，修改client中的remote_server为true，并指定http_base_url
+指定db_file_path和token，修改client中的remote_server和http_base_url
 ```
 
-# 反连平台配置
+# 配置反连平台
 上传 xray_1.9.11_linux_amd64和xray-license.lic 到云服务器
 
 步骤1
