@@ -1,13 +1,4 @@
-很久之前打了一次AWD，让我萌生了将常见漏洞都打一遍的想法
+A long time ago, i participated in an AWD CTF, which made me want to reproduce all the vulnerabilities.
 
-# 免责声明
-本项目中所有POC/EXP仅用于学习研究，不可用作恶意攻击！
-
-# V1.0
-漏洞复现 + 批量检测工具
-
-# V2.0
-漏洞复现 + 批量检测工具 + 漏洞武器化 + 批量利用工具
-
-# V3.0
-漏洞复现 + 批量检测工具 + 漏洞武器化 + 批量利用工具 + 漏洞分析
+# Disclaimer
+All the pocs / exps in current project only used for research or educational purpose, other uses are not related to the author.
