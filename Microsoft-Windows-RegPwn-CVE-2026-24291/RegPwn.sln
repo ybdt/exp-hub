@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegPwn", "RegPwn.csproj", "{FC463750-A9DC-42F0-A16F-1E8F00F483A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC463750-A9DC-42F0-A16F-1E8F00F483A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC463750-A9DC-42F0-A16F-1E8F00F483A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC463750-A9DC-42F0-A16F-1E8F00F483A8}.Debug|x64.ActiveCfg = Debug|x64
+		{FC463750-A9DC-42F0-A16F-1E8F00F483A8}.Debug|x64.Build.0 = Debug|x64
+		{FC463750-A9DC-42F0-A16F-1E8F00F483A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC463750-A9DC-42F0-A16F-1E8F00F483A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC463750-A9DC-42F0-A16F-1E8F00F483A8}.Release|x64.ActiveCfg = Release|x64
+		{FC463750-A9DC-42F0-A16F-1E8F00F483A8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ACEA85D5-888F-41E8-839D-BECC9A508B0E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+<project outputDir="C:\Users\Administrator.GOTHAM\source\repos\RegPwn\bin\x64\Release\Confused" baseDir="C:\Users\Administrator.GOTHAM\source\repos\RegPwn\bin\x64\Release" xmlns="http://confuser.codeplex.com">
+  <module path="RegPwn.exe">
+    <rule pattern="true" preset="minimum">
+      <protection id="anti debug" />
+      <protection id="resources" />
+      <protection id="watermark" action="remove" />
+      <protection id="rename" />
+      <protection id="anti dump" />
+      <protection id="constants" />
+    </rule>
+  </module>
+</project>
